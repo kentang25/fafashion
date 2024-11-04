@@ -1,63 +1,77 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?>
-  <nav class="navbar navbar-secondary navbar-expand-lg">
-    <div class="container">
-      <ul class="navbar-nav"> 
-         <li class="nav-item <?php echo $this->uri->segment(1) == 'home' ? 'active' : ''; ?>">
-          <a href="<?= base_url('home') ?>" class="nav-link"><i class="fa fa-home"></i><span>Home</span></a>
-        </li>
-        <li class="nav-item <?php echo $this->uri->segment(1) == 'profil' ? 'active' : ''; ?>">
-          <a href="<?= base_url('profil') ?>" class="nav-link"><i class="far fa-user"></i><span>Data Diri</span></a>
-        </li>
-        <li class="nav-item dropdown <?php echo $this->uri->segment(1) == 'kinerja' ? 'active' : ''; ?>">
-          <a href="#" data-toggle="dropdown" class="nav-link has-dropdown"><i class="fab fa-galactic-senate"></i><span>Kinerja Bidang</span></a>
-          <ul class="dropdown-menu">
-            <li class="nav-item"><a href="<?php echo base_url(); ?>kinerja/pendidikan" class="nav-link">Pendidikan</a></li>
-            <li class="nav-item"><a href="<?php echo base_url(); ?>kinerja/penelitian" class="nav-link"> Penelitian</a></li>
-            <li class="nav-item"><a href="<?php echo base_url(); ?>kinerja/pengabdian" class="nav-link">Pengabdian Masyarakat</a></li>
-            <li class="nav-item"><a href="<?php echo base_url(); ?>kinerja/penunjang" class="nav-link">Penunjang</a></li>
-          </ul>
-        </li>
-          <li class="nav-item <?php echo $this->uri->segment(1) == 'kewajiban' ? 'active' : ''; ?>">
-            <a href="<?php echo base_url(); ?>kewajiban" class="nav-link"><i class="fas fa-meteor"></i><span>Kewajiban Khusus</span></a>
-          </li>
-
-         <?php
-         //CEK ASSESOR
-         if(cek_assesor($this->session->userdata('code'))){
-            ?>
-            <li class="nav-item dropdown <?php echo $this->uri->segment(1) == 'assesor' ? 'active' : ''; ?>">
-              <a href="#" data-toggle="dropdown" class="nav-link has-dropdown"><i class="fab fa-galactic-senate"></i><span>Assesor</span></a>
-              <ul class="dropdown-menu">
-                <li class="nav-item"><a href="<?php echo base_url(); ?>assesor" class="nav-link"> Penilaian</a></li>
-              </ul>
-            </li>
-            <?php
-         }
-         ?>
-         
-        <li class="nav-item dropdown <?php echo $this->uri->segment(1) == 'cetak' ? 'active' : ''; ?>">
-          <a href="#" data-toggle="dropdown" class="nav-link has-dropdown "><i class="fa fa-print"></i><span>Cetak</span></a>
-          <ul class="dropdown-menu">
-            <li class="nav-item"><a href="<?php echo base_url(); ?>cetak/rencana" class="nav-link">Rencana SIAMI</a></li>
-            <li class="nav-item"><a href="<?php echo base_url(); ?>cetak/laporan" class="nav-link"> Laporan SIAMI</a></li>
-            <li class="nav-item"><a href="<?php echo base_url(); ?>cetak/kesimpulan" class="nav-link">Kesimpulan SIAMI</a></li>
-            <!-- <li class="nav-item"><a href="<?php echo base_url(); ?>cetak/lapwajib" class="nav-link">Laporan Kewajiban Khusus</a></li> -->
-            <div class="dropdown-divider"></div>
-            <li class="nav-item"><a href="<?php echo base_url(); ?>cetak/report" class="nav-link">Data SIAMI Lama</a></li>
-
-          </ul>
-        </li>
-
-
-        
-        <li class="nav-item <?php echo $this->uri->segment(1) == 'signature' ? 'active' : ''; ?>">
-          <a href="<?= base_url("signature") ?>" class="nav-link"><i class="fa fa-signature"></i><span>Signature / TTD</span></a>
-        </li>
-        <li class="nav-item <?php echo $this->uri->segment(2) == 'layout_top_navigation' ? 'active' : ''; ?>">
-          <a href="<?= base_url("login/logout") ?>" class="nav-link text-danger"><i class="fas fa-power-off"></i><span>Logout</span></a>
-        </li>
-      </ul>
+<!-- Offcanvas Menu Begin -->
+<div class="offcanvas-menu-overlay"></div>
+    <div class="offcanvas-menu-wrapper">
+        <div class="offcanvas__close">+</div>
+        <ul class="offcanvas__widget">
+            <li><span class="icon_search search-switch"></span></li>
+            <li><a href="#"><span class="icon_heart_alt"></span>
+                <div class="tip">2</div>
+            </a></li>
+            <li><a href="#"><span class="icon_bag_alt"></span>
+                <div class="tip">2</div>
+            </a></li>
+        </ul>
+        <div class="offcanvas__logo">
+            <a href="./index.html"><img src="img/logo.png" alt=""></a>
+        </div>
+        <div id="mobile-menu-wrap"></div>
+        <div class="offcanvas__auth">
+            <a href="#">Login</a>
+            <a href="#">Register</a>
+        </div>
     </div>
-  </nav>
+    <!-- Offcanvas Menu End -->
+
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-3 col-lg-2">
+                    <div class="header__logo">
+                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-7">
+                    <nav class="header__menu">
+                        <ul>
+                            <li class="active"><a href="./index.html">Home</a></li>
+                            <li><a href="#">Women’s</a></li>
+                            <li><a href="#">Men’s</a></li>
+                            <li><a href="./shop.html">Shop</a></li>
+                            <li><a href="#">Pages</a>
+                                <ul class="dropdown">
+                                    <li><a href="./product-details.html">Product Details</a></li>
+                                    <li><a href="./shop-cart.html">Shop Cart</a></li>
+                                    <li><a href="./checkout.html">Checkout</a></li>
+                                    <li><a href="./blog-details.html">Blog Details</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="./blog.html">Blog</a></li>
+                            <li><a href="./contact.html">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-3">
+                    <div class="header__right">
+                        <div class="header__right__auth">
+                            <a href="#">Login</a>
+                            <a href="#">Register</a>
+                        </div>
+                        <ul class="header__right__widget">
+                            <li><span class="icon_search search-switch"></span></li>
+                            <li><a href="#"><span class="icon_heart_alt"></span>
+                                <div class="tip">2</div>
+                            </a></li>
+                            <li><a href="#"><span class="icon_bag_alt"></span>
+                                <div class="tip">2</div>
+                            </a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="canvas__open">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+    </header>
+    <!-- Header Section End -->

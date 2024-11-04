@@ -42,8 +42,10 @@ class FrontendController extends MY_Controller
     {
         if ($return === true) {
             $content  = $this->load->view('template_user/_partials/header', $this->data);
+            $content .= $this->load->view('template_user/_partials/navbar', $this->data);
             $content .= $this->load->view($template_name, $this->data);
-            $content .= $this->load->view('template_user/_partials/footer', $this->data); 
+            $content .= $this->load->view('template_user/_partials/footer', $this->data);
+            $content .= $this->load->view('template_user/_partials/js', $this->data);
             return $content;
         } else {
             $this->load->view($template_name, $this->data);
