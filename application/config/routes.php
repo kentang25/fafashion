@@ -53,5 +53,12 @@ $route['default_controller'] = 'fafashion';
 $route['404_override'] = 'notfound';
 $route['translate_uri_dashes'] = FALSE;
 
+// --- admin ----
+
+$route['admin'] = 'fa_admin/dashboard';
+$route['admin/data-barang'] = 'fa_admin/data_barang';
+
+// --- end admin ---
+
 $route['fafashion/register'] = 'fafashion/auth_user/register';
 $route['fafashion/login'] = 'fafashion/auth_user/login';

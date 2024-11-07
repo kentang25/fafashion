@@ -1,15 +1,15 @@
 
 <!-- Js Plugins -->
-<script src="js/jquery-3.3.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.magnific-popup.min.js"></script>
-<script src="js/jquery-ui.min.js"></script>
-<script src="js/mixitup.min.js"></script>
-<script src="js/jquery.countdown.min.js"></script>
-<script src="js/jquery.slicknav.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/jquery.nicescroll.min.js"></script>
-<script src="js/main.js"></script>
+<script src="<?=base_url() ?>assets/js/jquery-3.3.1.min.js"></script>
+<script src="<?=base_url() ?>assets/modules/bootstrap/js/bootstrap.min.js"></script>
+<script src="<?=base_url() ?>assets/js/jquery.magnific-popup.min.js"></script>
+<script src="<?=base_url() ?>assets/modules/jquery-ui/jquery-ui.min.js"></script>
+<script src="<?=base_url() ?>assets/js/mixitup.min.js"></script>
+<script src="<?=base_url() ?>assets/js/jquery.countdown.min.js"></script>
+<script src="<?=base_url() ?>assets/js/jquery.slicknav.js"></script>
+<script src="<?=base_url() ?>assets/js/owl.carousel.min.js"></script>
+<script src="<?=base_url() ?>assets/js/jquery.nicescroll.min.js"></script>
+<script src="<?=base_url() ?>assets/js/main.js"></script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>

@@ -1,38 +1,75 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?>
-  <nav class="navbar navbar-secondary navbar-expand-lg">
-    <div class="container">
-      <ul class="navbar-nav">
-        <li class="nav-item dropdown">
-          <a href="#" data-toggle="dropdown" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Dashboard</span></a>
-          <ul class="dropdown-menu">
-            <li class="nav-item"><a href="<?php echo base_url(); ?>dist/index_0" class="nav-link">General Dashboard</a></li>
-            <li class="nav-item"><a href="<?php echo base_url(); ?>dist/index" class="nav-link">Ecommerce Dashboard</a></li>
-          </ul>
-        </li>
-        <li class="nav-item <?php echo $this->uri->segment(2) == 'layout_top_navigation' ? 'active' : ''; ?>">
-          <a href="#" class="nav-link"><i class="far fa-heart"></i><span>Top Navigation</span></a>
-        </li>
-        <li class="nav-item dropdown">
-          <a href="#" data-toggle="dropdown" class="nav-link has-dropdown"><i class="far fa-clone"></i><span>Multiple Dropdown</span></a>
-          <ul class="dropdown-menu">
-            <li class="nav-item"><a href="#" class="nav-link">Not Dropdown Link</a></li>
-            <li class="nav-item dropdown"><a href="#" class="nav-link has-dropdown">Hover Me</a>
-              <ul class="dropdown-menu">
-                <li class="nav-item"><a href="#" class="nav-link">Link</a></li>
-                <li class="nav-item dropdown"><a href="#" class="nav-link has-dropdown">Link 2</a>
-                  <ul class="dropdown-menu">
-                    <li class="nav-item"><a href="#" class="nav-link">Link</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">Link</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">Link</a></li>
-                  </ul>
-                </li>
-                <li class="nav-item"><a href="#" class="nav-link">Link 3</a></li>
-              </ul>
+<!-- Content Wrapper -->
+<div id="content-wrapper" class="d-flex flex-column">
+
+<!-- Main Content -->
+<div id="content">
+
+    <!-- Topbar -->
+    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+        <!-- Sidebar Toggle (Topbar) -->
+        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+        </button>
+
+        <!-- Topbar Search -->
+        <!-- <?= form_open('dg_admin/data_barang/search') ?>
+            <input type="" name="keyword" placeholder="Cari">
+            <input type="submit" value="cari">
+        <?= form_close(); ?> -->
+
+        <form
+            class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="<?= site_url(). 'dg_admin/data_barang/search' ?>" method="GET">
+            <div class="input-group">
+                <input type="text" name="keyword" class="form-control bg-light border-0 small" placeholder="Search for..."
+                    aria-label="Search" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="button">
+                        <i class="fas fa-search fa-sm"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <!-- Topbar Navbar -->
+        <ul class="navbar-nav ml-auto">
+
+            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+            <li class="nav-item dropdown no-arrow d-sm-none">
+                <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-search fa-fw"></i>
+                </a>
+                <!-- Dropdown - Messages -->
+                <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                    aria-labelledby="searchDropdown">
+                    <?= form_open('dg_admin/data_barang/search'); ?>
+                        <div class="input-group">
+                            <input type="" name="keyword" class="form-control bg-light border-0 small"
+                                placeholder="Search for..." aria-label="Search"
+                                aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    <?= form_close() ?>
+                </div>
             </li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </nav>
+
+            <div class="navbar">
+                
+                <div class="topbar-divider d-none d-sm-block"></div>
+
+                <!-- Nav Item - User Information -->
+                <ul class="nav navbar-nav navbar-right">
+                    
+                </ul>
+
+            </div>
+
+        </ul>
+
+    </nav>
+    <!-- End of Topbar -->

@@ -1,173 +1,27 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <meta name="csrf-token" content="<?php echo $this->security->get_csrf_hash();?>" />
-  <title><?php echo $title; ?> &mdash; SIAMI</title>
 
-  <!-- General CSS Files -->
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/fontawesome/css/all.min.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-  <!-- CSS Libraries -->
-<?php
-if ($this->uri->segment(2) == "" || $this->uri->segment(2) == "index") { ?>
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/jqvmap/dist/jqvmap.min.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/summernote/summernote-bs4.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/owlcarousel2/dist/assets/owl.carousel.min.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/owlcarousel2/dist/assets/owl.theme.default.min.css">
-<?php
-}elseif ($this->uri->segment(2) == "index_0") { ?>
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/jqvmap/dist/jqvmap.min.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/weather-icon/css/weather-icons.min.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/weather-icon/css/weather-icons-wind.min.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/summernote/summernote-bs4.css">
-<?php
-}elseif ($this->uri->segment(2) == "bootstrap_card") { ?>
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/chocolat/dist/css/chocolat.css">
-<?php
-}elseif ($this->uri->segment(2) == "bootstrap_modal") { ?>
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/prism/prism.css">
-<?php
-}elseif ($this->uri->segment(2) == "components_gallery") { ?>
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/chocolat/dist/css/chocolat.css">
-<?php
-}elseif ($this->uri->segment(2) == "components_multiple_upload") { ?>
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/dropzonejs/dropzone.css">
-<?php
-}elseif ($this->uri->segment(2) == "components_statistic") { ?>
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/jqvmap/dist/jqvmap.min.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/flag-icon-css/css/flag-icon.min.css">
-<?php
-}elseif ($this->uri->segment(2) == "components_user") { ?>
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/bootstrap-social/bootstrap-social.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/owlcarousel2/dist/assets/owl.carousel.min.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/owlcarousel2/dist/assets/owl.theme.default.min.css">
-<?php
-}elseif ($this->uri->segment(2) == "forms_advanced_form") { ?>
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/jquery-selectric/selectric.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/bootstrap-timepicker/css/bootstrap-timepicker.min.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.css">
-<?php
-}elseif ($this->uri->segment(2) == "forms_editor") { ?>
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/summernote/summernote-bs4.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/codemirror/lib/codemirror.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/codemirror/theme/duotone-dark.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/jquery-selectric/selectric.css">
-<?php
-}elseif ($this->uri->segment(2) == "modules_calendar") { ?>
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/fullcalendar/fullcalendar.min.css">
-<?php
-}elseif ($this->uri->segment(2) == "modules_datatables") { ?>
- 
-<?php
-}elseif ($this->uri->segment(2) == "modules_ion_icons") { ?>
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/ionicons/css/ionicons.min.css">
-<?php
-}elseif ($this->uri->segment(2) == "modules_owl_carousel") { ?>
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/owlcarousel2/dist/assets/owl.carousel.min.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/owlcarousel2/dist/assets/owl.theme.default.min.css">
-<?php
-}elseif ($this->uri->segment(2) == "modules_toastr") { ?>
-<?php
-}elseif ($this->uri->segment(2) == "modules_vector_map") { ?>
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/izitoast/css/iziToast.min.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/jqvmap/dist/jqvmap.min.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/flag-icon-css/css/flag-icon.min.css">
-<?php
-}elseif ($this->uri->segment(2) == "modules_weather_icon") { ?>
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/weather-icon/css/weather-icons.min.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/weather-icon/css/weather-icons-wind.min.css">
-<?php
-}elseif ($this->uri->segment(2) == "auth_login") { ?>
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/bootstrap-social/bootstrap-social.css">
-<?php
-}elseif ($this->uri->segment(2) == "auth_register") { ?>
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/jquery-selectric/selectric.css">
-<?php
-}elseif ($this->uri->segment(2) == "features_post_create") { ?>
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/summernote/summernote-bs4.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/jquery-selectric/selectric.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.css">
-<?php
-}elseif ($this->uri->segment(2) == "features_posts") { ?>
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/jquery-selectric/selectric.css">
-<?php
-}elseif ($this->uri->segment(2) == "features_profile") { ?>
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/bootstrap-social/bootstrap-social.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/summernote/summernote-bs4.css">
-<?php
-}elseif ($this->uri->segment(2) == "features_setting_detail") { ?>
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/codemirror/lib/codemirror.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/codemirror/theme/duotone-dark.css">
-<?php
-}elseif ($this->uri->segment(2) == "features_tickets") { ?>
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/summernote/summernote-bs4.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/chocolat/dist/css/chocolat.css">
-<?php
-} ?>
+    <title>Dungeons</title>
 
-<link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/datatables/datatables.min.css">
-<link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css">
-<link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/datatables/Select-1.2.4/css/select.bootstrap4.min.css">
-<link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/izitoast/css/iziToast.min.css">
-<link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/select2/dist/css/select2.min.css">
-<link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/bootstrap-daterangepicker/daterangepicker.css">
-<link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/summernote/summernote-bs4.css">
-<link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/chocolat/dist/css/chocolat.css">
+    <!-- Custom fonts for this template-->
+    <link href="<?= base_url() ?>assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
 
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
 
-  <!-- Template CSS -->
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/components.css">
-<!-- Start GA -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Custom styles for this template-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="<?= base_url() ?>assets/css/sb-admin-2.min.css" rel="stylesheet">
 
-  gtag('config', 'UA-94034622-3');
-</script>
- <!-- General JS Scripts -->
-  <script src="<?php echo base_url(); ?>assets/modules/jquery.min.js"></script>
-  <script src="<?php echo base_url(); ?>assets/modules/popper.js"></script>
-  <script src="<?php echo base_url(); ?>assets/modules/tooltip.js"></script>
-  <script src="<?php echo base_url(); ?>assets/modules/bootstrap/js/bootstrap.min.js"></script>
-  <script src="<?php echo base_url(); ?>assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
-  <script src="<?php echo base_url(); ?>assets/modules/moment.min.js"></script>
-  <script src="<?php echo base_url(); ?>assets/js/stisla.js"></script>
-  <script src="<?php echo base_url(); ?>assets/modules/select2/dist/js/select2.full.min.js"></script>
-  
-  <!-- JS -->
-  <script src="<?php echo base_url(); ?>assets/modules/bootstrap-daterangepicker/daterangepicker.js"></script>
-  <script src="<?php echo base_url(); ?>assets/modules/datatables/datatables.min.js"></script>
-  <script src="<?php echo base_url(); ?>assets/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>
-  <script src="<?php echo base_url(); ?>assets/modules/datatables/Select-1.2.4/js/dataTables.select.min.js"></script>
-  <script src="<?php echo base_url(); ?>assets/modules/jquery-ui/jquery-ui.min.js"></script>
-  <script src="<?php echo base_url(); ?>assets/modules/sweetalert/sweetalert.min.js"></script>
-  <!-- <script src="<?php echo base_url(); ?>assets/js/page/modules-sweetalert.js"></script>
-  <script src="<?php echo base_url(); ?>assets/js/page/modules-toastr.js"></script> -->
-  <script src="<?php echo base_url(); ?>assets/modules/izitoast/js/iziToast.min.js"></script>
+</head>
 
-<!-- /END GA --></head>
-
-<?php
-// if ($this->uri->segment(2) == "layout_transparent") {
-//   $this->load->view('dist/_partials/layout-2');
-//   $this->load->view('dist/_partials/sidebar-2');
-// }elseif ($this->uri->segment(2) == "layout_top_navigation") {
-//   $this->load->view('dist/_partials/layout-3');
-//   $this->load->view('dist/_partials/navbar');
-// }elseif ($this->uri->segment(3) != "auth" && $this->uri->segment(2) != "auth_forgot_password"&& $this->uri->segment(2) != "auth_register" && $this->uri->segment(2) != "auth_reset_password" && $this->uri->segment(2) != "errors_503" && $this->uri->segment(2) != "errors_403" && $this->uri->segment(2) != "errors_404" && $this->uri->segment(2) != "errors_500" && $this->uri->segment(2) != "utilities_contact" && $this->uri->segment(2) != "utilities_subscribe") {
-//   $this->load->view('dist/_partials/layout');
-//   $this->load->view('dist/_partials/sidebar');
-// }
- $this->load->view('template_admin/_partials/layout');
- $this->load->view('template_admin/_partials/sidebar');
-?>
+<body id="page-top">

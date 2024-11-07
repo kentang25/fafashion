@@ -43,7 +43,9 @@ class BackendController extends MY_Controller
     {
         if ($return === true) {
             $content  = $this->load->view('template_admin/_partials/header', $this->data);
-            $content .= $this->load->view($template_name, $this->data);
+            $content .= $this->load->view('template_admin/_partials/sidebar', $this->data);
+            $content .= $this->load->view('template_admin/_partials/navbar', $this->data);
+            $content .= $this->load->view($template_name, $this->data);  
             $content .= $this->load->view('template_admin/_partials/footer', $this->data); 
             return $content;
         } else {

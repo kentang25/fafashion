@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-2 col-md-4 col-sm-4 p-0">
-                <div class="instagram__item set-bg" data-setbg="<?= base_url() ?>assets/img/insta-1.jpg">
+                <div class="instagram__item set-bg" data-setbg="<?= base_url() ?>assets/img/insta-1.jpg.webp.webp">
                     <div class="instagram__text">
                         <i class="fa fa-instagram"></i>
                         <a href="#">@ ashion_shop</a>
@@ -11,7 +11,7 @@
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-4 p-0">
-                <div class="instagram__item set-bg" data-setbg="<?= base_url() ?>assets/img/insta-2.jpg">
+                <div class="instagram__item set-bg" data-setbg="<?= base_url() ?>assets/img/insta-2.jpg.webp">
                     <div class="instagram__text">
                         <i class="fa fa-instagram"></i>
                         <a href="#">@ ashion_shop</a>
@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-4 p-0">
-                <div class="instagram__item set-bg" data-setbg="<?= base_url() ?>assets/img/insta-3.jpg">
+                <div class="instagram__item set-bg" data-setbg="<?= base_url() ?>assets/img/insta-3.jpg.webp">
                     <div class="instagram__text">
                         <i class="fa fa-instagram"></i>
                         <a href="#">@ ashion_shop</a>
@@ -27,7 +27,7 @@
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-4 p-0">
-                <div class="instagram__item set-bg" data-setbg="<?= base_url() ?>assets/img/insta-4.jpg">
+                <div class="instagram__item set-bg" data-setbg="<?= base_url() ?>assets/img/insta-4.jpg.webp">
                     <div class="instagram__text">
                         <i class="fa fa-instagram"></i>
                         <a href="#">@ ashion_shop</a>
@@ -35,7 +35,7 @@
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-4 p-0">
-                <div class="instagram__item set-bg" data-setbg="<?= base_url() ?>assets/img/insta-5.jpg">
+                <div class="instagram__item set-bg" data-setbg="<?= base_url() ?>assets/img/insta-5.jpg.webp">
                     <div class="instagram__text">
                         <i class="fa fa-instagram"></i>
                         <a href="#">@ ashion_shop</a>
@@ -43,7 +43,7 @@
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-4 p-0">
-                <div class="instagram__item set-bg" data-setbg="<?= base_url() ?>assets/img/insta-6.jpg">
+                <div class="instagram__item set-bg" data-setbg="<?= base_url() ?>assets/img/insta-6.jpg.webp">
                     <div class="instagram__text">
                         <i class="fa fa-instagram"></i>
                         <a href="#">@ ashion_shop</a>
@@ -105,7 +105,7 @@
                         <button type="submit" class="site-btn">Subscribe</button>
                     </form>
                     <div class="footer__social">
-                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa-brands fa-facebook"></i></i></a>
                         <a href="#"><i class="fa fa-twitter"></i></a>
                         <a href="#"><i class="fa fa-youtube-play"></i></a>
                         <a href="#"><i class="fa fa-instagram"></i></a>
