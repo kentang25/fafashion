@@ -82,5 +82,11 @@ class Data_barang extends BackendController {
     
             $this->template_admin('v_data_barang', $this->data,true);
      }
+
+     public function insert()
+     {
+        $this->M_data_barang->insert_data();
+        redirect('admin/data-barang');
+     }
 	
 }

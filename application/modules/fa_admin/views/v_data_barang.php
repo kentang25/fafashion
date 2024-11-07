@@ -8,9 +8,37 @@
                 <td>NO</td>
                 <td>Nama Barang</td>
                 <td>Keterangan</td>
+				<td>kategori</td>
                 <td colspan="3">Aksi</td>
             </tr>
+
+				<?php
+					$d = $this->uri->segment(4);
+					foreach($data_barang as $key => $d_brg) :
+				?>
+
+			<tr>
+				<td>
+					<?php
+						if(!empty($this->uri->segment(4))){
+							echo $d+=1;
+						}else{
+							echo $key+1;
+						}
+					?>
+				</td>
+
+				<td><?= $d_brg->nama_barang ?></td>
+				<td><?= $d_brg->keterangan ?></td>
+				<td><?= $d_brg->kategori ?></td>
+				<td><?= anchor('admin/data-barang/edit/'. $d_brg->id_barang,'<div class="btn btn-primary"><i class="fa fa-edit"></i></div>' ) ?></td>
+				<td><?= anchor('admin/data-barang/delete/'. $d_brg->id_barang,'<div class="btn btn-warning"><i class="fa fa-trash"></i></div>' ) ?></td>
+				<td><?= anchor('admin/data-barang/detail/'. $d_brg->id_barang,'<div class="btn btn-info"><i class="fa fa-search"></i></div>' ) ?></td>
+
+			</tr>
+			<?php endforeach; ?>
         </table>
+		
         <?= $this->pagination->create_links(); ?>
         
     <!-- Modal -->
@@ -25,10 +53,10 @@
 	      </div>
 	      <div class="modal-body">
 
-	        <?= form_open_multipart('dg_admin/data_barang/insert'); ?>
+	        <?= form_open_multipart('fa_admin/data_barang/insert'); ?>
 	        	<div class="form-group">
 	        		<label>Nama Barang</label>
-	        		<input type="text" name="nama_brg" class="form-control">
+	        		<input type="text" name="nama_barang" class="form-control">
 	        	</div>
 	        	<div class="form-group">
 	        		<label>Keterangan</label>
