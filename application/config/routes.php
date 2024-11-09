@@ -57,6 +57,9 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['admin'] = 'fa_admin/dashboard';
 $route['admin/data-barang'] = 'fa_admin/data_barang';
+$route['admin/data-barang/edit/(:any)'] = 'fa_admin/data_barang/edit/$1';
+$route['admin/data-barang/delete/(:any)'] = 'fa_admin/data_barang/delete/$1';
+$route['admin/data-barang/detail/(:any)'] = 'fa_admin/data_barang/detail/$1';
 
 // --- end admin ---
 

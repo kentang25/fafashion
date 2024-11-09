@@ -83,10 +83,45 @@ class Data_barang extends BackendController {
             $this->template_admin('v_data_barang', $this->data,true);
      }
 
+    //  --- insert data ---
      public function insert()
      {
         $this->M_data_barang->insert_data();
         redirect('admin/data-barang');
      }
+
+    //  --- edit data ---
+    public function edit($id)
+    {
+        $where = array('id_barang'=>$id);
+
+        $this->data['edit_data'] = $this->M_data_barang->edit_data('tb_data_barang',$where)->result();
+        $this->template_admin('v_edit',$this->data,true);
+    }
+
+    // --- update data ---
+    public function update($id)
+    {
+        $this->M_data_barang->update_data($id);
+        redirect('admin/data-barang');
+    }
+
+    // --- delete data ---
+    public function delete($id)
+    {
+        $this->M_data_barang->delete_data($id);
+        redirect('admin/data-barang');
+    }
+
+    // --- detail data ---
+    public function detail($id)
+    {
+        $data_detail = $this->M_data_barang->detail_data($id);
+        $this->data['detail'] = $data_detail;
+
+            $this->template_admin('v_detail',$this->data,true);
+    }
+
+    
 	
 }
