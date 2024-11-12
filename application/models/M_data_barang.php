@@ -27,6 +27,7 @@
 			$nama_brg 	= $this->input->post('nama_barang');
 			$keterangan = $this->input->post('keterangan');
 			$kategori 	= $this->input->post('kategori');
+			$news 		= $this->input->post('news');
 			$stok 		= $this->input->post('stok');
 			$harga 		= $this->input->post('harga');
 			$gambar 	= $_FILES['gambar']['name'];
@@ -51,8 +52,8 @@
 					'kategori'		=> $kategori,
 					'stok'			=> $stok,
 					'harga'			=> $harga,
-					'gambar'		=> $gambar
-
+					'gambar'		=> $gambar,
+					'news'			=> $news
 				);
 
             $query = $this->db->insert('tb_data_barang',$data);
@@ -76,13 +77,15 @@
 			$kategori 	= $this->input->post('kategori');
 			$harga 		= $this->input->post('harga');
 			$stok 		= $this->input->post('stok');
+			$news		= $this->input->post('news');
 
 				$data = array(
 					'nama_barang' 	=> $nama_brg,
 					'keterangan'	=> $keterangan,
 					'kategori'		=> $kategori,
 					'harga'			=> $harga,
-					'stok'			=> $stok
+					'stok'			=> $stok,
+					'news'			=> $news
 				);
 
 				$this->db->where('id_barang', $id);

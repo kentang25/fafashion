@@ -25,7 +25,7 @@ class Fafashion extends FrontendController {
         $CI =& get_instance();
 
         $this->load->model('M_auth_user');
-        // $this->load->model('M_news');
+        $this->load->model('M_fafashion');
         // $this->load->model('M_gallery');
     }
 
@@ -39,7 +39,23 @@ class Fafashion extends FrontendController {
 
      public function index()
      {
+        $this->data['hot_trend'] = $this->M_fafashion->hot_trend()->result();
+        $this->data['best_seller'] = $this->M_fafashion->best_seller()->result();
+        $this->data['feature'] = $this->M_fafashion->feature()->result();
+
+        $this->data['fafashion'] = $this->M_fafashion->tampil_data()->result();
         $this->template_user('v_fafashion', $this->data,true);
+     }
+
+     public function news()
+     {
+        $this->data['hot_trend'] = $this->M_fafashion->hot_trend()->result();
+        $this->data['best_seller'] = $this->M_fafashion->hot_trend()->result();
+        $this->data['feature'] = $this->M_fafashion->hot_trend()->result();
+
+            $this->template_user('v_fafashion',$this->data,true);
+
+
      }
 	
 }

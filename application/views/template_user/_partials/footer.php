@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-2 col-md-4 col-sm-4 p-0">
-                <div class="instagram__item set-bg" data-setbg="<?= base_url() ?>assets/img/insta-1.jpg.webp.webp">
+                <div class="instagram__item set-bg" data-setbg="<?= base_url() ?>assets/img/insta-1.jpg.webp">
                     <div class="instagram__text">
                         <i class="fa fa-instagram"></i>
                         <a href="#">@ ashion_shop</a>

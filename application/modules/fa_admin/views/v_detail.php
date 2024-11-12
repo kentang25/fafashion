@@ -22,6 +22,10 @@
                 <th>Stok :</th>
                 <th><?= $detail->stok ?></th>
             </tr>
+            <tr>
+                <th>News :</th>
+                <th><?= $detail->news ?></th>
+            </tr>
         </table>
 
         <a href="<?= base_url('admin/data-barang') ?>"><button class="btn btn-info btn-sm">Back</button></a>

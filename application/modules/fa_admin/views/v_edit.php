@@ -15,10 +15,22 @@
             <select class="form-control mb-3" name="kategori">
                     <option><?= $e_data->kategori ?></option>
 	        		<option>Pakaian Pria</option>
+					<option>Pakaian Wanita</option>
+					<option>Pakaian Baby</option>
 	        		<option>Accessories</option>
 	        		<option>Shoes</option>
-	        		<option>Kaset</option>
-	        </select>
+                    <option>Bag</option>
+                </select>
+
+                
+	        <label>News</label>
+	        	<select class="form-control mb-3" name="news">
+                    <option>None</option>
+	    			<option>Hot Trend</option>
+					<option>Best Seller</option>
+					<option>Feature</option>	        			
+       		</select>
+	        	
 
             <label>Harga</label>
             <input type="text" class="form-control mb-3" name="harga" value="<?= $e_data->harga ?>">

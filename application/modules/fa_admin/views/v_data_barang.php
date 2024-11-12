@@ -66,9 +66,20 @@
 	        		<label>Kategori</label>
 	        		<select class="form-control" name="kategori">
 	        			<option>Pakaian Pria</option>
+						<option>Pakaian Wanita</option>
+						<option>Pakaian Baby</option>
 	        			<option>Accessories</option>
 	        			<option>Shoes</option>
-	        			<option>Kaset</option>
+						<option>Bag</option>
+	        		</select>
+	        	</div>
+				<div class="form-group">
+	        		<label>News</label>
+	        		<select class="form-control" name="news">
+						<option>None</option>
+	        			<option>Hot Trend</option>
+						<option>Best Seller</option>
+						<option>Feature</option>	        			
 	        		</select>
 	        	</div>
 	        	<div class="form-group">
