@@ -1001,6 +1001,19 @@ ol {
 	margin-right: 10px;
 }
 
+.categories__item_2 {
+	height: 614px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	padding-left: 30px;
+	margin-bottom: 10px;
+	
+}
+
 .categories__item.categories__large__item {
 	height: 638px;
 	padding-left: 70px;

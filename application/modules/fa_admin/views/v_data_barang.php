@@ -68,9 +68,12 @@
 	        			<option>Pakaian Pria</option>
 						<option>Pakaian Wanita</option>
 						<option>Pakaian Baby</option>
-	        			<option>Accessories</option>
-	        			<option>Shoes</option>
-						<option>Bag</option>
+	        			<option>Accessories Pria</option>
+						<option>Accessories Wanita</option>
+	        			<option>Shoes Pria</option>
+						<option>Shoes Wanita</option>
+						<option>Bag Pria</option>
+						<option>Bag Wanita</option>
 	        		</select>
 	        	</div>
 				<div class="form-group">

@@ -63,5 +63,13 @@ $route['admin/data-barang/detail/(:any)'] = 'fa_admin/data_barang/detail/$1';
 
 // --- end admin ---
 
+// --- auth fafashion ---
+
 $route['fafashion/register'] = 'fafashion/auth_user/register';
 $route['fafashion/login'] = 'fafashion/auth_user/login';
+
+// --- end auth ---
+
+// --- fafashion ---
+
+$route['wanita'] = 'fafashion/f_wanita';
