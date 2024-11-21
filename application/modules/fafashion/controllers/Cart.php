@@ -79,6 +79,12 @@ class Cart extends FrontendController {
         }
      }
 
+     public function cart_shop($id_user)
+     { 
+        $this->data['cart_item'] = $this->M_cart->show_cart($id_user)->result();
+        $this->template_user('cart/v_cart_shop',$this->data,true);
+     }
+
      
 	
 }

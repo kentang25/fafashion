@@ -2219,7 +2219,13 @@ ol {
 	top: 4px;
 }
 
+.col-4{
+	float:right;
+}
+
 .cart__total__procced {
+	/* position: relative;
+	left:100%; */
 	background: #f5f5f5;
 	padding: 40px;
 }

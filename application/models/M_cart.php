@@ -21,6 +21,14 @@
             return $query;
         }
 
+        public function show_cart($id_user)
+        {
+            $query = $this->db->where('id_user',$id_user)
+                              ->get('tb_cart');
+            return $query;
+
+        }
+
 
     }
 

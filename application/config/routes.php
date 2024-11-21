@@ -75,4 +75,7 @@ $route['login'] = 'fafashion/auth_user/login';
 $route['wanita'] = 'fafashion/f_wanita';
 $route['pria'] = 'fafashion/f_pria';
 $route['shop'] = 'fafashion/f_shop';
+
+// --- cart shop ---
 $route['add-cart/(:any)'] = 'fafashion/cart/addCart/$1';
+$route['cart-shop/(:any)'] = 'fafashion/cart/cart_shop/$1';
