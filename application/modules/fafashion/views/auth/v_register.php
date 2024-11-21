@@ -5,7 +5,7 @@
 				<div class="image-holder">
 					<img src="<?= base_url() ?>assets/img/registration-form-1.jpg" alt="">
 				</div>
-				<form method="POST" action="<?= base_url('fafashion/register') ?>">
+				<form method="POST" action="<?= base_url('register') ?>">
 					<h3>Registration Form</h3>
 					<div class="form-wrapper">
 						<input type="text" name="username" placeholder="Username" class="form-control">

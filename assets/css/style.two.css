@@ -1345,7 +1345,7 @@ ol {
 
 .categories__accordion .card-heading a:after,
 .categories__accordion .card-heading>a.active[aria-expanded=false]:after {
-	content: "ï„‡";
+	content: "";
 	font-size: 14px;
 	font-family: "FontAwesome";
 	color: #666666;
@@ -1355,7 +1355,7 @@ ol {
 }
 
 .categories__accordion .card-heading.active a:after {
-	content: "ï„†";
+	content: "";
 	font-size: 14px;
 	font-family: "FontAwesome";
 	color: #666666;
@@ -1366,7 +1366,7 @@ ol {
 
 .categories__accordion .card-heading a[aria-expanded=true]:after,
 .categories__accordion .card-heading>a.active:after {
-	content: "ï„†";
+	content: "";
 	font-size: 14px;
 	font-family: "FontAwesome";
 	color: #666666;

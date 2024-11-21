@@ -30,6 +30,20 @@
             }
         }
 
+        public function is_Loggedin()
+		{
+			if(!isset($_SESSION['is_logged_in'])){
+				return FALSE;
+			}else{
+				return TRUE;
+			}
+		}
+
+        public function get_id_user()
+        {
+            return $this->session->userdata('id_user');
+        }
+
     }
 
 ?>

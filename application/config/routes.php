@@ -65,11 +65,14 @@ $route['admin/data-barang/detail/(:any)'] = 'fa_admin/data_barang/detail/$1';
 
 // --- auth fafashion ---
 
-$route['fafashion/register'] = 'fafashion/auth_user/register';
-$route['fafashion/login'] = 'fafashion/auth_user/login';
+$route['register'] = 'fafashion/auth_user/register';
+$route['login'] = 'fafashion/auth_user/login';
 
 // --- end auth ---
 
 // --- fafashion ---
 
 $route['wanita'] = 'fafashion/f_wanita';
+$route['pria'] = 'fafashion/f_pria';
+$route['shop'] = 'fafashion/f_shop';
+$route['add-cart/(:any)'] = 'fafashion/cart/addCart/$1';

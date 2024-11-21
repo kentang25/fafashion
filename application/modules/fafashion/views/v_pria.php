@@ -2,7 +2,7 @@
     
  <section class="categories">
                 <div class="categories__item_2 categories__large__item set-bg"
-                data-setbg="<?=base_url() ?>assets/img/category-1.jpg.webp">
+                data-setbg="<?=base_url() ?>assets/img/category-2.jpg.webp">
                     <div class="categories__text">
                         <h1>Women’s fashion</h1>
                         <p>Sitamet, consectetur adipiscing elit, sed do eiusmod tempor incidid-unt labore
@@ -22,20 +22,20 @@
             </div>
         </div>
         <div class="row property__gallery">
-            <?php foreach($f_wanita as $key => $f_wnt) : ?>
+            <?php foreach($f_pria as $key => $f_pri) : ?>
 
             <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="product__item">
-                    <div class="product__item__pic set-bg" data-setbg="<?= base_url(). 'assets/uploads/'. $f_wnt->gambar ?>">
+                    <div class="product__item__pic set-bg" data-setbg="<?= base_url(). 'assets/uploads/'. $f_pri->gambar ?>">
                         <div class="label new">New</div>
                         <ul class="product__hover">
-                            <li><a href="<?= base_url(). 'assets/uploads/'. $f_wnt->gambar ?>" class="image-popup"><span><i class="fa-solid fa-maximize"></i></span></a></li>
+                            <li><a href="<?= base_url(). 'assets/uploads/'. $f_pri->gambar ?>" class="image-popup"><span><i class="fa-solid fa-maximize"></i></span></a></li>
                             <li><a href="#"><span><i class="fa-solid fa-heart"></span></i></a></li>
                             <li><a href="#"><span><i class="fa-solid fa-bag-shopping"></span></i></span></a></li>
                         </ul>
                     </div>
                     <div class="product__item__text">
-                        <h6><a href="#"><?= $f_wnt->nama_barang ?></a></h6>
+                        <h6><a href="#"><?= $f_pri->nama_barang ?></a></h6>
                         <div class="rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
@@ -43,7 +43,7 @@
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                         </div>
-                        <div class="product__price"><?= $f_wnt->harga ?></div>
+                        <div class="product__price"><?= $f_pri->harga ?></div>
                     </div>
                 </div>
             </div>
@@ -65,20 +65,20 @@
             </div>
         </div>
         <div class="row property__gallery">
-            <?php foreach($a_wanita as $key => $a_wnt) : ?>
+            <?php foreach($a_pria as $key => $a_pri) : ?>
 
             <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="product__item">
-                    <div class="product__item__pic set-bg" data-setbg="<?= base_url(). 'assets/uploads/'. $a_wnt->gambar ?>">
+                    <div class="product__item__pic set-bg" data-setbg="<?= base_url(). 'assets/uploads/'. $a_pri->gambar ?>">
                         <div class="label new">New</div>
                         <ul class="product__hover">
-                            <li><a href="<?= base_url(). 'assets/uploads/'. $a_wnt->gambar ?>" class="image-popup"><span><i class="fa-solid fa-maximize"></i></span></a></li>
+                            <li><a href="<?= base_url(). 'assets/uploads/'. $a_pri->gambar ?>" class="image-popup"><span><i class="fa-solid fa-maximize"></i></span></a></li>
                             <li><a href="#"><span><i class="fa-solid fa-heart"></span></i></a></li>
                             <li><a href="#"><span><i class="fa-solid fa-bag-shopping"></span></i></span></a></li>
                         </ul>
                     </div>
                     <div class="product__item__text">
-                        <h6><a href="#"><?= $a_wnt->nama_barang ?></a></h6>
+                        <h6><a href="#"><?= $a_pri->nama_barang ?></a></h6>
                         <div class="rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
@@ -86,7 +86,7 @@
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                         </div>
-                        <div class="product__price"><?= $a_wnt->harga ?></div>
+                        <div class="product__price"><?= $a_pri->harga ?></div>
                     </div>
                 </div>
             </div>
@@ -108,20 +108,20 @@
             </div>
         </div>
         <div class="row property__gallery">
-            <?php foreach($s_wanita as $key => $s_wnt) : ?>
+            <?php foreach($s_pria as $key => $s_pri) : ?>
 
             <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="product__item">
-                    <div class="product__item__pic set-bg" data-setbg="<?= base_url(). 'assets/uploads/'. $s_wnt->gambar ?>">
+                    <div class="product__item__pic set-bg" data-setbg="<?= base_url(). 'assets/uploads/'. $s_pri->gambar ?>">
                         <div class="label new">New</div>
                         <ul class="product__hover">
-                            <li><a href="<?= base_url(). 'assets/uploads/'. $s_wnt->gambar ?>" class="image-popup"><span><i class="fa-solid fa-maximize"></i></span></a></li>
+                            <li><a href="<?= base_url(). 'assets/uploads/'. $s_pri->gambar ?>" class="image-popup"><span><i class="fa-solid fa-maximize"></i></span></a></li>
                             <li><a href="#"><span><i class="fa-solid fa-heart"></span></i></a></li>
                             <li><a href="#"><span><i class="fa-solid fa-bag-shopping"></span></i></span></a></li>
                         </ul>
                     </div>
                     <div class="product__item__text">
-                        <h6><a href="#"><?= $s_wnt->nama_barang ?></a></h6>
+                        <h6><a href="#"><?= $s_pri->nama_barang ?></a></h6>
                         <div class="rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
@@ -129,7 +129,7 @@
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                         </div>
-                        <div class="product__price"><?= $s_wnt->harga ?></div>
+                        <div class="product__price"><?= $s_pri->harga ?></div>
                     </div>
                 </div>
             </div>

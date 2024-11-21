@@ -24,8 +24,9 @@ class Fafashion extends FrontendController {
         // Normally, to call any of the available CodeIgniter object or pre defined library classes then you need to declare.
         $CI =& get_instance();
 
-        $this->load->model('M_auth_user');
+        
         $this->load->model('M_fafashion');
+        $this->load->model('M_auth_user');
         // $this->load->model('M_gallery');
     }
 
@@ -39,6 +40,11 @@ class Fafashion extends FrontendController {
 
      public function index()
      {
+
+        if(!$this->M_auth_user->is_loggedin()){
+            redirect('login');
+        }
+
         $this->data['hot_trend'] = $this->M_fafashion->hot_trend()->result();
         $this->data['best_seller'] = $this->M_fafashion->best_seller()->result();
         $this->data['feature'] = $this->M_fafashion->feature()->result();
