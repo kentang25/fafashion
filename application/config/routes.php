@@ -79,3 +79,8 @@ $route['shop'] = 'fafashion/f_shop';
 // --- cart shop ---
 $route['add-cart/(:any)'] = 'fafashion/cart/addCart/$1';
 $route['cart-shop/(:any)'] = 'fafashion/cart/cart_shop/$1';
+
+// --- pembayaran ---
+
+$route['pembayaran/order'] = 'fafashion/pembayaran/order';
+$route['pembayaran/transaksi/(:any)'] = 'fafashion/pembayaran/transaksi/$1';

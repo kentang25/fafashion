@@ -15,7 +15,13 @@
                                 </tr>
                             </thead>
 
-							<?php foreach($cart_item as $key => $c_item) : ?>
+							<?php 
+
+                            $total = 0;
+                            foreach($cart_item as $key => $c_item) : 
+                            $subtotal = $c_item->harga * $c_item->jumlah;
+
+                            ?>
                             <tbody>
                                 <tr>
                                     <td class="cart__product__item">
@@ -35,15 +41,19 @@
                                     <td class="cart__quantity">
 									<div class="pro-qty">
 										<!-- <span class="dec qtybtn">-</span> -->
-                                            <input type="number" value="1" min="1" max="10">
+                                            <input type="number" value="<?= $c_item->jumlah ?>" min="1" max="10">
 										<!-- <span class="inc qtybtn">+</span> -->
                                     </div>
                                     </td>
-                                    <td class="cart__total">$ 300.0</td>
+                                    <td class="cart__total"><?= number_format($c_item->harga * 1,0,',','.'); ?></td>
                                     <td class="cart__close"><span class="icon_close"></span></td>
                                 </tr>
                             </tbody>
-							<?php endforeach; ?>
+							<?php 
+                                // hitung total 
+                                $total += $subtotal;
+                                endforeach; 
+                            ?>
                         </table>
                     </div>
                 </div>
@@ -65,10 +75,10 @@
                     <div class="cart__total__procced">
                         <h6>Cart total</h6>
                         <ul>
-                            <li>Subtotal <span>$ 750.0</span></li>
-                            <li>Total <span>$ 750.0</span></li>
+                            <li>Subtotal <span><?= number_format($total,0,',','.'); ?></span></li>
+                            <li>Total <span><?= number_format($total,0,',','.'); ?></span></li>
                         </ul>
-                        <a href="#" class="primary-btn">Proceed to checkout</a>
+                        <a href="<?= base_url('pembayaran/order') ?>" class="primary-btn">Proceed to checkout</a>
                     </div>
                 </div>
             </div>
