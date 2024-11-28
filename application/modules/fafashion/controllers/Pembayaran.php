@@ -41,14 +41,16 @@ class Pembayaran extends FrontendController {
      {
 
         $get_id = $this->M_auth_user->get_id_user();
+        // var_dump($get_id);
+        // exit();
         
 
         $cart_item = $this->M_cart->show_cart($get_id)->result();
         
 
-        if(empty($cart_item)){
-            show_error('Keranjan masih kosong');
-        }
+        // if(empty($cart_item)){
+        //     show_error('Keranjan masih kosong');
+        // }
 
         $subtotal = 0;
 
@@ -70,6 +72,7 @@ class Pembayaran extends FrontendController {
             'id_user'       => $get_id,
             'total_harga'   => $subtotal,
             'status'        => 'pending',
+            'jumlah'        => 1,
             'created_at'    => date('Y-m-d H:i:s')
 
         );
@@ -79,7 +82,7 @@ class Pembayaran extends FrontendController {
         // var_dump($order_id);
         // exit();
         
-        $this->data['cart_items'] = $this->M_cart->show_cart($get_id)->result();
+        $this->data['order_items'] = $this->M_cart->show_cart($get_id)->result();
 
         $this->template_user('v_pembayaran',$this->data,true);
         
@@ -99,6 +102,7 @@ class Pembayaran extends FrontendController {
         }
 
         $subtotal;
+        
 
         $status_pembayaran = 'succes';
 
@@ -112,15 +116,32 @@ class Pembayaran extends FrontendController {
 
         );
 
+        
+
 
         $transaksi = $this->M_pembayaran->created_transaksi($data_transaksi);
         // var_dump($transaksi);
         // exit();
-        return $transaksi;
-        
 
-        // --- update status order ---
-        $this->M_pembayaran->update_status_order($id_order);
+        
+        // $this->M_pembayaran->update_status_order($id_order);
+
+        // --- jika transaksi berhasil ---
+
+        if($transaksi){
+            // --- update status ---
+            $this->M_pembayaran->update_status_order($id_order);
+            
+            // --- clear cart ---
+
+            $id_user = $this->M_auth_user->get_id_user();
+            $this->M_pembayaran->clear_cart($id_user);
+
+            redirect('shop');
+
+        }else{
+            return FALSE;
+        }
      }
 
 

@@ -31,7 +31,7 @@
                         <ul class="product__hover">
                             <li><a href="<?= base_url(). 'assets/uploads/'. $f_wnt->gambar ?>" class="image-popup"><span><i class="fa-solid fa-maximize"></i></span></a></li>
                             <li><a href="#"><span><i class="fa-solid fa-heart"></span></i></a></li>
-                            <li><a href="#"><span><i class="fa-solid fa-bag-shopping"></span></i></span></a></li>
+                            <li><a data-toggle="modal" data-target="#modal_barang"><span><i class="fa-solid fa-bag-shopping"></span></i></a></li>
                         </ul>
                     </div>
                     <div class="product__item__text">
@@ -74,7 +74,7 @@
                         <ul class="product__hover">
                             <li><a href="<?= base_url(). 'assets/uploads/'. $a_wnt->gambar ?>" class="image-popup"><span><i class="fa-solid fa-maximize"></i></span></a></li>
                             <li><a href="#"><span><i class="fa-solid fa-heart"></span></i></a></li>
-                            <li><a href="#"><span><i class="fa-solid fa-bag-shopping"></span></i></span></a></li>
+                            <li><a data-toggle="modal" data-target="#modal_barang"><span><i class="fa-solid fa-bag-shopping"></span></i></a></li>
                         </ul>
                     </div>
                     <div class="product__item__text">
@@ -117,7 +117,7 @@
                         <ul class="product__hover">
                             <li><a href="<?= base_url(). 'assets/uploads/'. $s_wnt->gambar ?>" class="image-popup"><span><i class="fa-solid fa-maximize"></i></span></a></li>
                             <li><a href="#"><span><i class="fa-solid fa-heart"></span></i></a></li>
-                            <li><a href="#"><span><i class="fa-solid fa-bag-shopping"></span></i></span></a></li>
+                            <li><a data-toggle="modal" data-target="#modal_barang"><span><i class="fa-solid fa-bag-shopping"></span></i></a></li>
                         </ul>
                     </div>
                     <div class="product__item__text">
@@ -141,7 +141,78 @@
 <!-- Product Section End -->
 
 
-<!-- Product Wanita Section -->
+<!-- Modal Wanita Section -->
 
+<div class="modal fade" id="modal_barang" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h4 class="modal-title" id="exampleModalLabel">FORM CART</h4>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+                
+             <form method="POST" action="<?= site_url('fafashion/cart/addCart/'. $f_wnt->id_barang) ?>">
+                
+                <input type="number" name="qty" id="<?= $f_wnt->id_barang ?>" max="<?= $f_wnt->stok ?>" min="1" value="1" class="d-inline"><br><br>
 
-<!-- Product Wanita Section End -->
+		        <button type="reset" class="btn btn-danger" data-dismiss="modal">Reset</button>
+		        <button type="submit" class="btn btn-primary">Add to Cart</button>
+
+            </form>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+    
+    <div class="modal fade" id="modal_barang" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h4 class="modal-title" id="exampleModalLabel">FORM CART</h4>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+                
+             <form method="POST" action="<?= site_url('fafashion/cart/addCart/'. $a_wnt->id_barang) ?>">
+                
+                <input type="number" name="qty" id="<?= $a_wnt->id_barang ?>" max="<?= $a_wnt->stok ?>" min="1" value="1" class="d-inline"><br><br>
+
+		        <button type="reset" class="btn btn-danger" data-dismiss="modal">Reset</button>
+		        <button type="submit" class="btn btn-primary">Add to Cart</button>
+
+            </form>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+    <div class="modal fade" id="modal_barang" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h4 class="modal-title" id="exampleModalLabel">FORM CART</h4>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+                
+             <form method="POST" action="<?= site_url('fafashion/cart/addCart/'. $s_wnt->id_barang) ?>">
+                
+                <input type="number" name="qty" id="<?= $s_wnt->id_barang ?>" max="<?= $s_wnt->stok ?>" min="1" value="1" class="d-inline"><br><br>
+
+		        <button type="reset" class="btn btn-danger" data-dismiss="modal">Reset</button>
+		        <button type="submit" class="btn btn-primary">Add to Cart</button>
+
+            </form>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+<!-- Modal Wanita Section End -->

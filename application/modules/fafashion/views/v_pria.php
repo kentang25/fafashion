@@ -31,7 +31,7 @@
                         <ul class="product__hover">
                             <li><a href="<?= base_url(). 'assets/uploads/'. $f_pri->gambar ?>" class="image-popup"><span><i class="fa-solid fa-maximize"></i></span></a></li>
                             <li><a href="#"><span><i class="fa-solid fa-heart"></span></i></a></li>
-                            <li><a href="#"><span><i class="fa-solid fa-bag-shopping"></span></i></span></a></li>
+                            <li><a data-toggle="modal" data-target="#modal_barang"><span><i class="fa-solid fa-bag-shopping"></span></i></a></li>
                         </ul>
                     </div>
                     <div class="product__item__text">
@@ -74,7 +74,7 @@
                         <ul class="product__hover">
                             <li><a href="<?= base_url(). 'assets/uploads/'. $a_pri->gambar ?>" class="image-popup"><span><i class="fa-solid fa-maximize"></i></span></a></li>
                             <li><a href="#"><span><i class="fa-solid fa-heart"></span></i></a></li>
-                            <li><a href="#"><span><i class="fa-solid fa-bag-shopping"></span></i></span></a></li>
+                            <li><a data-toggle="modal" data-target="#modal_barang"><span><i class="fa-solid fa-bag-shopping"></span></i></a></li>
                         </ul>
                     </div>
                     <div class="product__item__text">
@@ -117,7 +117,7 @@
                         <ul class="product__hover">
                             <li><a href="<?= base_url(). 'assets/uploads/'. $s_pri->gambar ?>" class="image-popup"><span><i class="fa-solid fa-maximize"></i></span></a></li>
                             <li><a href="#"><span><i class="fa-solid fa-heart"></span></i></a></li>
-                            <li><a href="#"><span><i class="fa-solid fa-bag-shopping"></span></i></span></a></li>
+                            <li><a data-toggle="modal" data-target="#modal_barang"><span><i class="fa-solid fa-bag-shopping"></span></i></a></li>
                         </ul>
                     </div>
                     <div class="product__item__text">

@@ -28,10 +28,7 @@
 
         public function get_id_order($id_order)
         {
-            $query = $this->db->where('id_order',$id_order)
-                              ->get('tb_order');
-
-            return $query->row();
+            return $this->db->get_where('tb_order',array('id_order => $id_order'))->row();
         }
 
         public function get_order()
@@ -54,6 +51,14 @@
         {
             $query = $this->db->insert('tb_transaksi',$data);
             return $query;
+        }
+
+        // --- clear cart into id_user ---
+
+        public function clear_cart($id_user)
+        {
+            $this->db->where('id_user',$id_user);
+            return $this->db->delete('tb_cart');
         }
 
 
