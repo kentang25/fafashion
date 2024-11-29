@@ -44,6 +44,7 @@ class Data_barang extends BackendController {
         $this->load->library('pagination');
 
             $jumlah = $this->M_data_barang->get_count();
+            
 
             $config['base_url']     = base_url(). 'fa_admin/data_barang/index' ;
             // $config['page_query_string'] = TRUE;
@@ -74,8 +75,11 @@ class Data_barang extends BackendController {
     
             $this->pagination->initialize($config);
     
-            $data['start'] = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+            $data['start'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+            // var_dump($data['start']);
+            // exit();
             $this->data['barang'] = $this->M_data_barang->get($config['per_page'],$data['start']);
+            
             // var_dump($this->data['barang']);
             // exit();
             // $this->data['start'] = $page;

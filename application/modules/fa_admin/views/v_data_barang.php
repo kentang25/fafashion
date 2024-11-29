@@ -14,7 +14,7 @@
 
 				<?php
 					$d = $this->uri->segment(4);
-					foreach($data_barang as $key => $d_brg) :
+					foreach($barang as $key => $d_brg) :
 				?>
 
 			<tr>
@@ -39,7 +39,7 @@
 			<?php endforeach; ?>
         </table>
 		
-        <?= $this->pagination->create_links(); ?>
+        <?= $this->data['pagination_links'] = $this->pagination->create_links(); ?>
         
     <!-- Modal -->
 	<div class="modal fade" id="modal_barang" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
