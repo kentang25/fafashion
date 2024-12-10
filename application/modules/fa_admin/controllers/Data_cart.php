@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class F_shop extends FrontendController {
+class Data_cart extends BackendController {
 	//
     public $CI;
 
@@ -23,9 +23,9 @@ class F_shop extends FrontendController {
         // This function returns the main CodeIgniter object.
         // Normally, to call any of the available CodeIgniter object or pre defined library classes then you need to declare.
         $CI =& get_instance();
-    
-        $this->load->model('M_shop');
-        $this->load->model('M_auth_user');
+
+        $this->load->model('M_data_cart');
+        // $this->load->model('M_news');
         // $this->load->model('M_gallery');
     }
 
@@ -36,18 +36,11 @@ class F_shop extends FrontendController {
      *
      * @return [type] [description]
      */
-
-     public function index()
-     {
-
+	public function index() {
         
-        // $this->data['a_pria'] = $this->M_pria->data_accessories()->result();
-        // $this->data['s_pria'] = $this->M_pria->data_shoes()->result();
+        $this->data['data_cart'] = $this->M_data_cart->tampil_data_cart()->result();
+        $this->template_admin('v_data_cart',$this->data,true);
 
-        $this->data['f_shop'] = $this->M_shop->tampil_data()->result();
-        // var_dump($this->data['f_shop']);
-        // exit();
-        $this->template_user('v_shop', $this->data,true);
-     }
-	
+	}
+
 }

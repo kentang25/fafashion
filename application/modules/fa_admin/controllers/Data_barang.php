@@ -75,7 +75,7 @@ class Data_barang extends BackendController {
     
             $this->pagination->initialize($config);
     
-            $data['start'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+            $data['start'] = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
             // var_dump($data['start']);
             // exit();
             $this->data['barang'] = $this->M_data_barang->get($config['per_page'],$data['start']);

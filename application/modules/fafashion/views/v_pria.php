@@ -31,7 +31,14 @@
                         <ul class="product__hover">
                             <li><a href="<?= base_url(). 'assets/uploads/'. $f_pri->gambar ?>" class="image-popup"><span><i class="fa-solid fa-maximize"></i></span></a></li>
                             <li><a href="#"><span><i class="fa-solid fa-heart"></span></i></a></li>
-                            <li><a data-toggle="modal" data-target="#modal_barang"><span><i class="fa-solid fa-bag-shopping"></span></i></a></li>
+                            <li>
+                                <form action="<?= base_url('add-cart/'.$f_pri->id_barang) ?>" method="post" style="display: none;" id="form-cart-<?= $f_pri->id_barang ?>">
+                                    <input type="hidden" name="qty" value="1">
+                                </form>
+                                    <a href="#" onclick="return confirmSubmit('form-cart-<?= $f_pri->id_barang ?>');">
+                                        <span><i class="fa-solid fa-bag-shopping"></i></span>
+                                   </a>
+                           </li>
                         </ul>
                     </div>
                     <div class="product__item__text">
@@ -74,7 +81,14 @@
                         <ul class="product__hover">
                             <li><a href="<?= base_url(). 'assets/uploads/'. $a_pri->gambar ?>" class="image-popup"><span><i class="fa-solid fa-maximize"></i></span></a></li>
                             <li><a href="#"><span><i class="fa-solid fa-heart"></span></i></a></li>
-                            <li><a data-toggle="modal" data-target="#modal_barang"><span><i class="fa-solid fa-bag-shopping"></span></i></a></li>
+                            <li>
+                                <form action="<?= base_url('add-cart/'.$a_pri->id_barang) ?>" method="post" style="display: none;" id="form-cart-<?= $a_pri->id_barang ?>">
+                                    <input type="hidden" name="qty" value="1">
+                                </form>
+                                    <a href="#" onclick="return confirmSubmit('form-cart-<?= $a_pri->id_barang ?>');">
+                                        <span><i class="fa-solid fa-bag-shopping"></i></span>
+                                   </a>
+                           </li>
                         </ul>
                     </div>
                     <div class="product__item__text">
@@ -117,7 +131,14 @@
                         <ul class="product__hover">
                             <li><a href="<?= base_url(). 'assets/uploads/'. $s_pri->gambar ?>" class="image-popup"><span><i class="fa-solid fa-maximize"></i></span></a></li>
                             <li><a href="#"><span><i class="fa-solid fa-heart"></span></i></a></li>
-                            <li><a data-toggle="modal" data-target="#modal_barang"><span><i class="fa-solid fa-bag-shopping"></span></i></a></li>
+                            <li>
+                                <form action="<?= base_url('add-cart/'.$s_pri->id_barang) ?>" method="post" style="display: none;" id="form-cart-<?= $s_pri->id_barang ?>">
+                                    <input type="hidden" name="qty" value="1">
+                                </form>
+                                    <a href="#" onclick="return confirmSubmit('form-cart-<?= $s_pri->id_barang ?>');">
+                                        <span><i class="fa-solid fa-bag-shopping"></i></span>
+                                   </a>
+                           </li>
                         </ul>
                     </div>
                     <div class="product__item__text">
@@ -141,7 +162,13 @@
 <!-- Product Section End -->
 
 
-<!-- Product Wanita Section -->
-
-
-<!-- Product Wanita Section End -->
+<script>
+        function confirmSubmit(formId) {
+            // Menampilkan alert konfirmasi
+            if (confirm('Apakah Anda yakin ingin menambahkan barang ini ke keranjang?')) {
+                document.getElementById(formId).submit(); // Kirim form jika "OK" dipilih
+                return true;
+            }
+            return false; // Tidak melakukan apa-apa jika "Cancel" dipilih
+        }
+</script>

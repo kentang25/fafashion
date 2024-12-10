@@ -40,10 +40,23 @@
                                     <td class="cart__price">Rp. <?= number_format($c_item->harga,0,',','.'); ?></td>
                                     <td class="cart__quantity">
 									<div class="pro-qty">
-										<!-- <span class="dec qtybtn">-</span> -->
-                                            <input type="number" value="<?= $c_item->jumlah ?>" min="1" max="10">
-										<!-- <span class="inc qtybtn">+</span> -->
+                                        <!-- Tambahkan atribut data-id untuk mengidentifikasi barang -->
+                                        <form method="POST">
+    <input 
+        type="number" 
+        class="qty-input" 
+        data-id-barang="<?= $c_item->id_barang ?>" 
+        data-harga="<?= $c_item->harga ?>" 
+        value="<?= $c_item->jumlah ?>" 
+        min="1" 
+        max="10">
+    <span class="total-harga" id="total-harga-<?= $c_item->id_barang ?>">
+        <?= $c_item->harga * $c_item->jumlah ?>
+    </span>
+</form>
+
                                     </div>
+
                                     </td>
                                     <td class="cart__total"><?= number_format($c_item->harga * 1,0,',','.'); ?></td>
                                     <td class="cart__close"><span class="icon_close"></span></td>
@@ -66,7 +79,7 @@
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="cart__btn update__btn">
-                        <a href="#"><span class="icon_loading"></span> Update cart</a>
+                        <a href="<?= base_url('cart/update_qty') ?>"><span class="icon_loading"></span> Update cart</a>
                     </div>
                 </div>
             </div>
@@ -85,3 +98,40 @@
         </div>
     </section>
     <!-- Shop Cart Section End -->
+
+
+
+<script>
+$(document).on('input', '.qty-input', function() {
+    var qty = $(this).val(); // Ambil nilai qty
+    var harga = $(this).data('harga'); // Ambil harga per unit
+    var idBarang = $(this).data('id-barang'); // Ambil ID barang
+
+    // Hitung total harga
+    var totalHarga = qty * harga;
+
+    // Update total harga di elemen yang sesuai
+    $('#total-harga-' + idBarang).text(totalHarga.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' }));
+
+    // Opsional: Kirim data ke server untuk pembaruan
+    $.ajax({
+        url: '<?= base_url("cart/update_qty") ?>',
+        type: 'POST',
+        data: { id_barang: idBarang, qty: qty, harga: harga },
+        success: function(response) {
+            if (response.status = 'success') {
+                console.log('Jumlah berhasil diperbarui di server.');
+            } else {
+                console.log('Gagal memperbarui jumlah di server.');
+            }
+        },
+        error: function() {
+            console.error('Kesalahan saat mengirim data ke server.');
+        }
+    });
+});
+
+
+</script>
+
+

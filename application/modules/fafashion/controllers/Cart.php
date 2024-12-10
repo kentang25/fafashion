@@ -51,6 +51,9 @@ class Cart extends FrontendController {
             $qty = $this->input->post('qty');
         }
 
+        // var_dump($barang);
+        // exit();
+
         $data = array(
 
             'id'    => $barang->id_barang,
@@ -59,6 +62,8 @@ class Cart extends FrontendController {
             'qty'   => $qty
 
         );
+
+        
 
         $this->cart->insert($data);
 
@@ -86,6 +91,31 @@ class Cart extends FrontendController {
         $this->data['cart_item'] = $this->M_cart->show_cart($id_user)->result();
         $this->template_user('cart/v_cart_shop',$this->data,true);
      }
+
+     public function update_qty() {
+        // Ambil data dari POST
+        $id_barang = $this->input->post('id_barang');
+        $qty = $this->input->post('qty');
+        $harga = $this->input->post('harga');
+    
+        // Validasi data
+        if (!$id_barang || !$qty || $qty < 1) {
+            echo json_encode(['status' => 'error', 'message' => 'Data tidak valid']);
+            return;
+        }
+    
+        // Update qty di database
+        // $this->load->model('Cart_model'); // Pastikan model tersedia
+        $updated = $this->M_cart->update_cart_qty($id_barang, $qty,$harga);
+    
+        if ($updated) {
+            echo json_encode(['status' => 'success', 'message' => 'Quantity updated']);
+        } else {
+            echo json_encode(['status' => 'error', 'message' => 'Failed to update quantity']);
+        }
+    }
+    
+    
 
      
 	

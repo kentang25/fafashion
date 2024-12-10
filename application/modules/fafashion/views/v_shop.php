@@ -70,12 +70,10 @@
                                         <div id="collapseFour" class="collapse" data-parent="#accordionExample">
                                             <div class="card-body">
                                                 <ul>
-                                                    <li><a href="#">Coats</a></li>
-                                                    <li><a href="#">Jackets</a></li>
-                                                    <li><a href="#">Dresses</a></li>
-                                                    <li><a href="#">Shirts</a></li>
-                                                    <li><a href="#">T-shirts</a></li>
-                                                    <li><a href="#">Jeans</a></li>
+                                                    <li><a href="#">Rings</a></li>
+                                                    <li><a href="#">bracelets</a></li>
+                                                    <li><a href="#">wathces</a></li>
+                                                    <li><a href="#">necklaces</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -114,7 +112,14 @@
                                     <ul class="product__hover">
                                         <li><a href="<?= base_url(). 'assets/uploads/'. $f_shp->gambar; ?>" class="image-popup"><span><i class="fa-solid fa-maximize"></i></span></a></li>
                                         <li><a href="#"><span><i class="fa-solid fa-heart"></span></i></a></li>
-                                        <li><a data-toggle="modal" data-target="#modal_barang"><span><i class="fa-solid fa-bag-shopping"></span></i></a></li>
+                                        <li>
+                                            <form action="<?= base_url('add-cart/'.$f_shp->id_barang) ?>" method="post" style="display: none;" id="form-cart-<?= $f_shp->id_barang ?>">
+                                                <input type="hidden" name="qty" value="1">
+                                            </form>
+                                            <a href="#" onclick="return confirmSubmit('form-cart-<?= $f_shp->id_barang ?>');">
+                                                <span><i class="fa-solid fa-bag-shopping"></i></span>
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                                 <div class="product__item__text">
@@ -152,10 +157,9 @@
 	      </div>
 	      <div class="modal-body">
                 
-             <form method="POST" action="<?= site_url('fafashion/cart/addCart/'. $f_shp->id_barang) ?>">
+             <form method="POST" action="<?= base_url('add-cart/'. $f_shp->id_barang) ?>">
                 
                 <input type="number" name="qty" id="<?= $f_shp->id_barang ?>" max="<?= $f_shp->stok ?>" min="1" value="1" class="d-inline"><br><br>
-
 		        <button type="reset" class="btn btn-danger" data-dismiss="modal">Reset</button>
 		        <button type="submit" class="btn btn-primary">Add to Cart</button>
 
@@ -164,3 +168,14 @@
 	    </div>
 	  </div>
 	</div>
+
+    <script>
+        function confirmSubmit(formId) {
+            // Menampilkan alert konfirmasi
+            if (confirm('Apakah Anda yakin ingin menambahkan barang ini ke keranjang?')) {
+                document.getElementById(formId).submit(); // Kirim form jika "OK" dipilih
+                return true;
+            }
+            return false; // Tidak melakukan apa-apa jika "Cancel" dipilih
+        }
+    </script>

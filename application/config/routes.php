@@ -60,6 +60,7 @@ $route['admin/data-barang'] = 'fa_admin/data_barang';
 $route['admin/data-barang/edit/(:any)'] = 'fa_admin/data_barang/edit/$1';
 $route['admin/data-barang/delete/(:any)'] = 'fa_admin/data_barang/delete/$1';
 $route['admin/data-barang/detail/(:any)'] = 'fa_admin/data_barang/detail/$1';
+$route['admin/cart-data'] = 'fa_admin/data_cart';
 
 // --- end admin ---
 
@@ -79,6 +80,7 @@ $route['shop'] = 'fafashion/f_shop';
 // --- cart shop ---
 $route['add-cart/(:any)'] = 'fafashion/cart/addCart/$1';
 $route['cart-shop'] = 'fafashion/cart/cart_shop';
+$route['cart/update_qty'] = 'fafashion/cart/update_qty';
 
 // --- pembayaran ---
 
