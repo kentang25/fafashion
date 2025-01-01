@@ -93,27 +93,38 @@ class Cart extends FrontendController {
      }
 
      public function update_qty() {
-        // Ambil data dari POST
         $id_barang = $this->input->post('id_barang');
-        $qty = $this->input->post('qty');
-        $harga = $this->input->post('harga');
+        // echo json_encode($id_barang);
+        // exit();
+        $jumlah = $this->input->post('jumlah');
     
-        // Validasi data
-        if (!$id_barang || !$qty || $qty < 1) {
-            echo json_encode(['status' => 'error', 'message' => 'Data tidak valid']);
-            return;
-        }
+        if ($id_barang && $jumlah) {
+            // Contoh logika untuk memperbarui kuantitas di database
+            // $this->load->model('Cart_model');
+            $result = $this->M_cart->update_cart_qty($id_barang, $jumlah);
     
-        // Update qty di database
-        // $this->load->model('Cart_model'); // Pastikan model tersedia
-        $updated = $this->M_cart->update_cart_qty($id_barang, $qty,$harga);
-    
-        if ($updated) {
-            echo json_encode(['status' => 'success', 'message' => 'Quantity updated']);
+            if ($result) {
+                $response = [
+                    'status' => 'success',
+                    'message' => 'Quantity updated successfully'
+                ];
+            } else {
+                $response = [
+                    'status' => 'error',
+                    'message' => 'Failed to update quantity'
+                ];
+            }
         } else {
-            echo json_encode(['status' => 'error', 'message' => 'Failed to update quantity']);
+            $response = [
+                'status' => 'error',
+                'message' => 'Invalid data received'
+            ];
         }
+    
+        echo json_encode($response);
     }
+    
+    
     
     
 

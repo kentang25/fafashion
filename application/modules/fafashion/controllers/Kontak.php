@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Data_cart extends BackendController {
+class Kontak extends FrontendController {
 	//
     public $CI;
 
@@ -24,7 +24,7 @@ class Data_cart extends BackendController {
         // Normally, to call any of the available CodeIgniter object or pre defined library classes then you need to declare.
         $CI =& get_instance();
 
-        $this->load->model('M_data_cart');
+        // $this->load->model('M_master');
         // $this->load->model('M_news');
         // $this->load->model('M_gallery');
     }
@@ -37,27 +37,10 @@ class Data_cart extends BackendController {
      * @return [type] [description]
      */
 	public function index() {
-        
-        // $this->data['data_cart'] = $this->M_data_cart->tampil_data_cart()->result();
-        // $this->load->library('pagination');
-        
-
-
-            $base_url       = site_url('fa_admin/data_cart/index');
-            $per_page       = 10;
-            $uri_segment    = 4;
-
-            $total_rows = $this->M_data_cart->get_count();
-
-            $offset = $this->uri->segment($uri_segment,0);
-
-            $this->data['data_cart'] = $this->M_data_cart->get_cart($per_page,$offset);
-
-            $this->data['pagination'] = pagination_helper($base_url,$total_rows,$per_page,$uri_segment);
-            
-
-            $this->template_admin('v_data_cart',$this->data,true);
-
+        $this->template_user('v_kontak',$this->data,true);
 	}
 
 }
+
+
+

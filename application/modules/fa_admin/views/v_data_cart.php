@@ -25,4 +25,6 @@
     <?php endforeach; ?>
     </table>
 
+    <?= $pagination; ?>
+
 </div>

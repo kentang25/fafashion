@@ -107,28 +107,28 @@
                         $num_pag = $this->uri->segment(4);
                         // var_dump($num_pag);
                         // exit();
-                        foreach($barang_shop as $key => $f_shp) :
+                        foreach($pakaian_wanita as $key => $p_wnt) :
                     ?>
                         <div class="col-lg-4 col-md-6">
                             
                             <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="<?= base_url(). 'assets/uploads/'. $f_shp->gambar; ?>">
+                                <div class="product__item__pic set-bg" data-setbg="<?= base_url(). 'assets/uploads/'. $p_wnt->gambar; ?>">
                                     <div class="label new">New</div>
                                     <ul class="product__hover">
-                                        <li><a href="<?= base_url(). 'assets/uploads/'. $f_shp->gambar; ?>" class="image-popup"><span><i class="fa-solid fa-maximize"></i></span></a></li>
+                                        <li><a href="<?= base_url(). 'assets/uploads/'. $p_wnt->gambar; ?>" class="image-popup"><span><i class="fa-solid fa-maximize"></i></span></a></li>
                                         <li><a href="#"><span><i class="fa-solid fa-heart"></span></i></a></li>
                                         <li>
-                                            <form action="<?= base_url('add-cart/'.$f_shp->id_barang) ?>" method="post" style="display: none;" id="form-cart-<?= $f_shp->id_barang ?>">
+                                            <form action="<?= base_url('add-cart/'.$p_wnt->id_barang) ?>" method="post" style="display: none;" id="form-cart-<?= $p_wnt->id_barang ?>">
                                                 <input type="hidden" name="qty" value="1">
                                             </form>
-                                            <a href="#" onclick="return confirmSubmit('form-cart-<?= $f_shp->id_barang ?>');">
+                                            <a href="#" onclick="return confirmSubmit('form-cart-<?= $p_wnt->id_barang ?>');">
                                                 <span><i class="fa-solid fa-bag-shopping"></i></span>
                                             </a>
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="product__item__text">
-                                    <h6><a href="#"><?= $f_shp->nama_barang ?></a></h6>
+                                    <h6><a href="#"><?= $p_wnt->nama_barang ?></a></h6>
                                     <div class="rating">
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
@@ -136,7 +136,7 @@
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
                                     </div>
-                                    <div class="product__price"> Rp <?= number_format($f_shp->harga, 0, ',', '.') ?></div>
+                                    <div class="product__price"> Rp <?= number_format($p_wnt->harga, 0, ',', '.') ?></div>
                                 </div>
                             </div>
                             

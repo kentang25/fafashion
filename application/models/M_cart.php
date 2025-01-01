@@ -25,11 +25,15 @@
 
         }
 
-        public function update_cart_qty($id_barang,$qty,$harga)
+        public function get_barang_by_id($id_barang)
         {
-            $this->db->where('id_barang',$id_barang);
-            return $this->db->update('tb_cart',['jumlah'=> $qty,
-                                                'harga' => $harga]); 
+            return $this->db->get_where('tb_data_barang', array('id_barang'=>$id_barang))->row();
+        }
+
+        public function update_cart_qty($id_barang,$jumlah)
+        {
+            $this->db->where('id_barang', $id_barang);
+            return $this->db->update('tb_cart', ['jumlah' => $jumlah]);
         }
 
 

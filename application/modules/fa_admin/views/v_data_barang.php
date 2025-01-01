@@ -39,7 +39,7 @@
 			<?php endforeach; ?>
         </table>
 		
-        <?= $this->data['pagination_links'] = $this->pagination->create_links(); ?>
+        <?= $pagination ?>
         
     <!-- Modal -->
 	<div class="modal fade" id="modal_barang" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -61,6 +61,8 @@ $route['admin/data-barang/edit/(:any)'] = 'fa_admin/data_barang/edit/$1';
 $route['admin/data-barang/delete/(:any)'] = 'fa_admin/data_barang/delete/$1';
 $route['admin/data-barang/detail/(:any)'] = 'fa_admin/data_barang/detail/$1';
 $route['admin/cart-data'] = 'fa_admin/data_cart';
+$route['admin/orders-data'] = 'fa_admin/data_order';
+$route['admin/transaksi-data'] = 'fa_admin/data_transaksi';
 
 // --- end admin ---
 
@@ -76,6 +78,12 @@ $route['login'] = 'fafashion/auth_user/login';
 $route['wanita'] = 'fafashion/f_wanita';
 $route['pria'] = 'fafashion/f_pria';
 $route['shop'] = 'fafashion/f_shop';
+$route['kontak'] = 'fafashion/kontak';
+
+// --- kategori ---
+
+$route['shop/shoes'] = 'fafashion/kategori/shoes_wanita';
+$route['shop/tshirt'] = 'fafashion/kategori/tshirt_wanita';
 
 // --- cart shop ---
 $route['add-cart/(:any)'] = 'fafashion/cart/addCart/$1';

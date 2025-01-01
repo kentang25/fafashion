@@ -37,28 +37,32 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="cart__price">Rp. <?= number_format($c_item->harga,0,',','.'); ?></td>
+                                    <td class="cart__price">
+                                     <span class="total-harga" id="total-harga-<?= $c_item->id_barang ?>">
+                                                <?= number_format($c_item->harga * $c_item->jumlah,0,',','.') ?>
+                                     </span>
+                                    </td>
                                     <td class="cart__quantity">
 									<div class="pro-qty">
                                         <!-- Tambahkan atribut data-id untuk mengidentifikasi barang -->
-                                        <form method="POST">
-    <input 
-        type="number" 
-        class="qty-input" 
-        data-id-barang="<?= $c_item->id_barang ?>" 
-        data-harga="<?= $c_item->harga ?>" 
-        value="<?= $c_item->jumlah ?>" 
-        min="1" 
-        max="10">
-    <span class="total-harga" id="total-harga-<?= $c_item->id_barang ?>">
-        <?= $c_item->harga * $c_item->jumlah ?>
-    </span>
-</form>
+                                        <form>
+                                            <input 
+                                                type="number" 
+                                                class="qty-input" 
+                                                data-id-barang="<?= $c_item->id_barang ?>" 
+                                                data-harga="<?= $c_item->harga ?>" 
+                                                value="<?= $c_item->jumlah ?>" 
+                                                min="1" 
+                                                max="10">
+                                            
+                                        </form>
 
                                     </div>
 
                                     </td>
-                                    <td class="cart__total"><?= number_format($c_item->harga * 1,0,',','.'); ?></td>
+                                    <td class="cart__total"><span class="total-harga" id="total-harga-<?= $c_item->id_barang ?>">
+                                                <?= number_format($c_item->harga * $c_item->jumlah,0,',','.') ?>
+                                     </span></td>
                                     <td class="cart__close"><span class="icon_close"></span></td>
                                 </tr>
                             </tbody>
@@ -99,37 +103,58 @@
     </section>
     <!-- Shop Cart Section End -->
 
-
-
+<form id="formx">
+    <input type="text" name="r" value="ss">
+</form>
+<!-- masih ada yang salah -->
 <script>
-$(document).on('input', '.qty-input', function() {
-    var qty = $(this).val(); // Ambil nilai qty
-    var harga = $(this).data('harga'); // Ambil harga per unit
-    var idBarang = $(this).data('id-barang'); // Ambil ID barang
+$(document).ready(function() {
+    $('.qty-input').on('change', function() {
+        // Ambil data dari input
+        let inputElement = $(this);
+        let idBarang = inputElement.data('id-barang');
+        let hargaSatuan = inputElement.data('harga');
+        let jumlahBaru = inputElement.val();
 
-    // Hitung total harga
-    var totalHarga = qty * harga;
+        // Hitung total harga baru
+        let totalHarga = hargaSatuan * jumlahBaru;
 
-    // Update total harga di elemen yang sesuai
-    $('#total-harga-' + idBarang).text(totalHarga.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' }));
+        // Data yang akan dikirim ke server
+        let datasend = {
+            id_barang: idBarang,
+            jumlah: jumlahBaru
+        };
+        // console.log(datasend);
 
-    // Opsional: Kirim data ke server untuk pembaruan
-    $.ajax({
-        url: '<?= base_url("cart/update_qty") ?>',
-        type: 'POST',
-        data: { id_barang: idBarang, qty: qty, harga: harga },
-        success: function(response) {
-            if (response.status = 'success') {
-                console.log('Jumlah berhasil diperbarui di server.');
-            } else {
-                console.log('Gagal memperbarui jumlah di server.');
+        // Kirim data ke server dengan AJAX
+        $.ajax({
+            url: '<?= base_url("cart/update_qty") ?>', // Ganti dengan URL yang sesuai
+            type: 'POST',
+            dataType: 'json',
+            // headers: {
+            //     "Accept" : "application/ld+json",
+            //     "Content-Type": "text/json; charset=utf-8"
+            // },
+            data: datasend,
+            success: function(response) {
+                if (response.status === 'success') {
+                    console.log('Kuantitas berhasil diperbarui di server.');
+                    
+                    // Perbarui total harga di UI
+                    inputElement.closest('tr').find('.total-harga').text('Rp ' + totalHarga.toLocaleString());
+                } else {
+                    console.error('Gagal memperbarui kuantitas.');
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('Kesalahan saat mengirim data ke server:', error);
+                console.log(xhr.responseText);
             }
-        },
-        error: function() {
-            console.error('Kesalahan saat mengirim data ke server.');
-        }
+        });
     });
 });
+
+
 
 
 </script>

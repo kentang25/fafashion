@@ -58,7 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('database', 'session', 'encryption','form_validation','dbpdo','cart');
+$autoload['libraries'] = array('database', 'session', 'encryption','form_validation','dbpdo','cart','pagination');
 
 /*
 | -------------------------------------------------------------------
@@ -95,7 +95,7 @@ foreach (glob("application/helpers/*.php") as $filename) {
   $nama = str_replace("_helper.php", "", $nama);
   $helper[] = $nama;
 }
-array_push($helper,'string','url','file','cookie');
+array_push($helper,'string','url','file','cookie','pagination');
 $autoload['helper'] = $helper;
 /*
 | -------------------------------------------------------------------
