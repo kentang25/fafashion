@@ -18,18 +18,18 @@
             <input type="submit" value="cari">
         <?= form_close(); ?> -->
 
-        <form
-            class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="<?= site_url(). 'dg_admin/data_barang/search' ?>" method="GET">
+        <!-- <form
+            class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="<?= site_url('fa_admin/data_barang/search') ?>"  method="GET">
             <div class="input-group">
-                <input type="text" name="keyword" class="form-control bg-light border-0 small" placeholder="Search for..."
+                <input type="text" name="keyword" id="search-bar" class="form-control bg-light border-0 small" placeholder="Search for..."
                     aria-label="Search" aria-describedby="basic-addon2">
                 <div class="input-group-append">
-                    <button class="btn btn-primary" type="button">
+                    <button class="btn btn-primary" id="btn-search" type="button">
                         <i class="fas fa-search fa-sm"></i>
                     </button>
                 </div>
             </div>
-        </form>
+        </form> -->
 
         <!-- Topbar Navbar -->
         <ul class="navbar-nav ml-auto">
@@ -73,3 +73,26 @@
 
     </nav>
     <!-- End of Topbar -->
+
+    <!-- search data -->
+
+    <!-- <script>
+        $document().ready(function(){
+            $('#search-bar').on('input',function{
+                let keyword = $(this).val();
+
+                .ajax({
+                    url: "<?= site_url('fa_admin/data_barang/search') ?>",
+                    type: "GET",
+                    data: {keyword: keyword}
+                    success : function(response){
+                        $('#search-result').html(response);
+                    },
+
+                    error: function(xhr,status,error){
+                        console.error("AJAX Error: ", status, error);
+                    }
+                })
+            })
+        });
+    </script> -->

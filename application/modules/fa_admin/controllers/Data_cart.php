@@ -60,4 +60,32 @@ class Data_cart extends BackendController {
 
 	}
 
+    public function search_cart()
+    {
+        $keyword = $this->input->get('keyword');
+
+        $base_url       = site_url('fa_admin/data_cart/search_cart');
+        $per_page       = 10;
+        $uri_segment    = 4;
+
+        $total_rows = $this->M_data_cart->get_count($keyword);
+        $offset     = $this->uri->segment($uri_segment,0);
+
+        $searching = $this->data['data_cart'] = $this->M_data_cart->search_data($keyword,$per_page,$offset);
+        // var_dump($searching);
+        // exit();
+        $this->data['pagination'] = pagination_helper($base_url,$total_rows,$per_page,$uri_segment);
+
+        foreach($searching as $key => $src){
+            echo '<tr>
+                <td>' . ($key + 1)  .'</td>
+                <td>' . $src->nama  .'</td>
+                <td>' . $src->harga  .'</td>
+                <td>' . $src->jumlah  .'</td>
+                <td>' . $src->id_barang  .'</td>
+                <td>' . $src->id_user  .'</td>
+            </tr>';
+        }
+    }
+
 }

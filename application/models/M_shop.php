@@ -64,6 +64,18 @@
             return $query->result();
         }
 
+        // --- search ---
+
+        public function get_keyword($keyword)
+        {
+            $this->db->like('nama_barang',$keyword);
+            $this->db->or_like('keterangan',$keyword);
+            $this->db->or_like('kategori',$keyword);
+            
+            $query = $this->db->get('tb_data_barang');
+            return $query->result();
+        }
+
 
     }
 

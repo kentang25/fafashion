@@ -83,5 +83,11 @@ class Auth_user extends FrontendController {
                     }
             }
     }
+
+    public function logout()
+    {
+        $this->session->sess_destroy();
+        redirect('login');
+    }
     
 }

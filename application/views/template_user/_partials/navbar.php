@@ -16,8 +16,7 @@
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__auth">
-            <a href="#">Login</a>
-            <a href="#">Register</a>
+            <a href="<?= base_url('logout') ?>">logout</a>
         </div>
     </div>
     <!-- Offcanvas Menu End -->
@@ -43,7 +42,6 @@
                                     <li><a href="./product-details.html">Product Details</a></li>
                                     <li><a href="<?= base_url('cart-shop') ?>">Shop Cart</a></li>
                                     <li><a href="<?= base_url('pembayaran/order') ?>">Checkout</a></li>
-                                    <li><a href="./blog-details.html">Blog Details</a></li>
                                 </ul>
                             </li>
                             <li><a href="./blog.html">Blog</a></li>
@@ -53,17 +51,25 @@
                 </div>
                 <div class="col-lg-3">
                     <div class="header__right">
-                        <div class="header__right__auth">
-                            <a href="#">Login</a>
-                            <a href="#">Register</a>
-                        </div>
+                        
                         <ul class="header__right__widget">
-                            <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i></li>
+                        <li>
+                            <form action="<?= site_url('fafashion/f_shop/search') ?>" method="GET" style="display: inline;">
+                                <input type="text" name="search" placeholder="Search..." style="border: 1px solid; border-radius:5px;">
+                                <button type="submit" style="background: none; border: none; cursor: pointer;">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                </button>
+                            </form>
+                        </li>
+
                             <li><a href="#"><i class="fa-solid fa-heart"></i>
                                 <div class="tip">2</div>
                             </a></li>
-                            <li><a href="#"><i class="fa-solid fa-bag-shopping"></i>
+                            <!-- <li><a href="#"><i class="fa-solid fa-bag-shopping"></i>
                                 <div class="tip">2</div>
+                            </a></li> -->
+                            <li><a href="<?= base_url('logout') ?>"><i class="fa fa-sign-out"></i>
+                                <!-- <div class="tip"></div> -->
                             </a></li>
                         </ul>
                     </div>
@@ -75,3 +81,21 @@
         </div>
     </header>
     <!-- Header Section End -->
+
+    <style>
+        li form {
+            display: flex;
+            align-items: center;
+        }
+
+        li input[type="text"] {
+            padding: 5px;
+            font-size: 14px;
+        }
+
+        li button {
+            padding: 5px;
+            cursor: pointer;
+        }
+
+    </style>

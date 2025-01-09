@@ -25,7 +25,7 @@ class Dashboard extends BackendController {
         $CI =& get_instance();
 
         // $this->load->model('M_fa_amdin');
-        // $this->load->model('M_news');
+        $this->load->model('M_auth_admin');
         // $this->load->model('M_gallery');
     }
 
@@ -39,6 +39,9 @@ class Dashboard extends BackendController {
 
      public function index()
      {
+        if(!$this->M_auth_admin->is_loggin()){
+            redirect(base_url('admin/login'));
+        }
         $this->template_admin('v_dashboard', $this->data,true);
      }
 	

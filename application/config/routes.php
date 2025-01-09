@@ -64,12 +64,22 @@ $route['admin/cart-data'] = 'fa_admin/data_cart';
 $route['admin/orders-data'] = 'fa_admin/data_order';
 $route['admin/transaksi-data'] = 'fa_admin/data_transaksi';
 
+$route['admin/searching'] = 'fa_admin/data_barang/search';
+$route['admin/searching_cart'] = 'fa_admin/data_cart/search_cart';
+
 // --- end admin ---
+
+// --- auth admin ---
+$route['admin/register'] = 'fa_admin/admin_auth/auth_admin/register';
+$route['admin/login'] = 'fa_admin/admin_auth/auth_admin/login';
+
+// --- end auth admin ---
 
 // --- auth fafashion ---
 
 $route['register'] = 'fafashion/auth_user/register';
 $route['login'] = 'fafashion/auth_user/login';
+$route['logout'] = 'fafashion/auth_user/logout';
 
 // --- end auth ---
 

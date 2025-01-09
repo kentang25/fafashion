@@ -155,11 +155,7 @@
                 </div>
             </div>
         </div>
-        <?php 
-                        echo $this->data['pagination_links'] = $this->pagination->create_links(); 
-                        // var_dump($this->data['pagination_links']);
-                        // exit();
-                    ?>
+        <?= $pagination; ?>
     </section>
     <!-- Shop Section End -->
 

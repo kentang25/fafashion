@@ -45,62 +45,30 @@ class F_shop extends FrontendController {
         // $this->data['s_pria'] = $this->M_pria->data_shoes()->result();
 
       //   $this->data['f_shop'] = $this->M_shop->tampil_data()->result();
-        $this->load->library('pagination');
+       $base_url = site_url('fafashion/f_shop/index');
+       $per_page = 10;
+       $uri_segment = 4;
 
-        $jumlah = $this->M_shop->get_count();
-        // var_dump($jumlah);
-        // exit();
-        $config['base_url']     = site_url(). 'fafashion/f_shop/index';
-        // $config['base_url']     = base_url('shop');
-        // var_dump($config['base_url']);
-        // exit();
-        $config['total_rows']     = $jumlah;
-        $config['per_page']     = 10;
-        $choice                 = $config['total_rows']/$config['per_page'];
-        $config['num_links']    = floor($choice);
-        // var_dump($choice);
-        // exit();
+       $total_rows  = $this->M_shop->get_count();
+       $offset      = $this->uri->segment($uri_segment,0);
 
-        $config['first_link']       = 'First';
-        $config['last_link']        = 'Last';
-        $config['next_link']        = 'Next';
-        $config['prev_link']        = 'Prev';
-        $config['full_tag_open']    = '<div class="pagging text-center"><nav><ul class="pagination justify-content-center">';
-        $config['full_tag_close']   = '</ul></nav></div>';
-        $config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
-        $config['num_tag_close']    = '</span></li>';
-        $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
-        $config['cur_tag_close']    = '<span class="sr-only">(current)</span></span></li>';
-        $config['next_tag_open']    = '<li class="page-item"><span class="page-link">';
-        $config['next_tagl_close']  = '<span aria-hidden="true">&raquo;</span></span></li>';
-        $config['prev_tag_open']    = '<li class="page-item"><span class="page-link">';
-        $config['prev_tagl_close']  = '</span>Next</li>';
-        $config['first_tag_open']   = '<li class="page-item"><span class="page-link">';
-        $config['first_tagl_close'] = '</span></li>';
-        $config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
-        $config['last_tag_close']  = '</span></li>';
-
-        $this->pagination->initialize($config);
-        // var_dump($this->pagination->initialize($config));
-        // exit();
-
-        $data['start'] = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
-        // var_dump($data['start']);
-        // exit();
-
-        $this->data['barang_shop'] = $this->M_shop->get($config['per_page'],$data['start']);
-      //   var_dump($this->data['barang_shop']);
-      //   exit();
+       $this->data['barang_shop'] = $this->M_shop->get($per_page,$offset);
+       $this->data['pagination'] = pagination_helper($base_url,$total_rows,$per_page,$uri_segment);
 
         $this->template_user('v_shop', $this->data,true);
      }
 
-     
-
-     public function tshirt()
+     public function search()
      {
-        $this->data['tshirt_wanita'] = $this->M_shop->tshirt();
-        $this->template_user('kategori/v_kategori_tshirt',$this->data,true);
+        $keyword = $this->input->get('search');
+
+        $this->data['barang_shop'] = $this->M_shop->get_keyword($keyword);
+
+        if(empty($this->data['barang_shop'])){
+          $this->template_user('error/v_404',$this->data,true);
+        }else{
+          $this->template_user('v_shop',$this->data,true);
+        }
      }
 	
 }

@@ -19,6 +19,13 @@
             return $query->result();
         }
 
+        public function search_data($keyword)
+        {
+            $this->db->like('nama',$keyword);
+            $query = $this->db->get('tb_cart');
+            return $query->result();
+        }
+
     }
 
 ?>

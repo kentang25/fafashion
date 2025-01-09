@@ -94,6 +94,38 @@ class Data_barang extends BackendController {
             $this->template_admin('v_detail',$this->data,true);
     }
 
+    public function search()
+    {
+        $keyword = $this->input->get('keyword');
+
+        $base_url = site_url('fa_admin/data_barang/search');
+        $per_page = 10;
+        $uri_segment = 4;
+
+        $total_rows = $this->M_data_barang->get_count($keyword);
+        $offset = $this->uri->segment($uri_segment,0);
+
+        $barang = $this->data['barang'] = $this->M_data_barang->search_data($keyword,$per_page,$offset);
+        // var_dump($barang);
+        // exit();
+
+        $this->data['pagination'] = pagination_helper($base_url,$per_page,$total_rows,$uri_segment);
+
+        // $this->template_admin('v_data_barang', $this->data,true);
+
+        foreach($barang as $key => $d_brg){
+            echo '<tr>
+            <td>' . ($key + 1) . '</td>
+            <td>' . $d_brg->nama_barang . '</td>
+            <td>' . $d_brg->keterangan . '</td>
+            <td>' . $d_brg->kategori . '</td>
+            <td><a href="' . base_url('admin/data-barang/edit/' . $d_brg->id_barang) . '" class="btn btn-primary"><i class="fa fa-edit"></i></a></td>
+            <td><a href="' . base_url('admin/data-barang/delete/' . $d_brg->id_barang) . '" class="btn btn-warning"><i class="fa fa-trash"></i></a></td>
+            <td><a href="' . base_url('admin/data-barang/detail/' . $d_brg->id_barang) . '" class="btn btn-info"><i class="fa fa-search"></i></a></td>
+            </tr>';
+        }
+    }
+
     
 	
 }
