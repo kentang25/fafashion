@@ -80,7 +80,7 @@ class Cart extends FrontendController {
         );
 
         if($this->M_cart->insert_cart($data_cart)){
-            redirect('shop');
+            redirect('cart-shop');
         }
      }
 

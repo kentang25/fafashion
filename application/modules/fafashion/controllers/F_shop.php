@@ -62,7 +62,15 @@ class F_shop extends FrontendController {
      {
         $keyword = $this->input->get('search');
 
-        $this->data['barang_shop'] = $this->M_shop->get_keyword($keyword);
+        $base_url = site_url('fafashion/f_shop/search');
+        $per_page = 10;
+        $uri_segment = 4;
+
+        $total_rows = $this->M_shop->get_count($keyword);
+        $offset     = $this->uri->segment($uri_segment,0);
+
+        $this->data['barang_shop']  = $this->M_shop->get_keyword($keyword,$per_page,$offset);
+        $this->data['pagination']   = pagination_helper($base_url,$total_rows,$per_page,$uri_segment);
 
         if(empty($this->data['barang_shop'])){
           $this->template_user('error/v_404',$this->data,true);

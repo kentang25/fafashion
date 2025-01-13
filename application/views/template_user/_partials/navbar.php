@@ -7,8 +7,8 @@
             <li><a href="#"><i class="fa-solid fa-heart"></i>
                 <div class="tip">2</div>
             </a></li>
-            <li><a href="#"><i class="fa-solid fa-bag-shopping"></i>
-                <div class="tip">2</div>
+            <li><a href="<?= base_url('logout') ?>"><i class="fa fa-sign-out"></i>
+                <!-- <div class="tip">2</div> -->
             </a></li>
         </ul>
         <div class="offcanvas__logo">
@@ -16,7 +16,7 @@
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__auth">
-            <a href="<?= base_url('logout') ?>">logout</a>
+            
         </div>
     </div>
     <!-- Offcanvas Menu End -->
