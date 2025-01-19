@@ -17,30 +17,19 @@
                         </thead>
                         <tbody>
                             <?php 
-                            $total = 0;
-                            foreach($cart_item as $key => $c_item): 
+                                $total = 0;
+                                foreach($cart_item as $c_item): 
+                                
                                 $subtotal = $c_item->harga * $c_item->jumlah;
+                                // var_dump($subtotal);
                             ?>
-                            <tr>
-                                <td class="cart__product__item d-flex align-items-center">
-                                    <img src="<?= base_url() ?>assets/img/cp-1.jpg.webp" alt="" class="img-fluid" style="max-width: 50px;">
-                                    <div class="cart__product__item__title ms-3">
-                                        <h6><?= $c_item->nama; ?></h6>
-                                        <div class="rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
+                            <tr data-id-barang="<?= $c_item->id_barang ?>">
+                                <td class="cart__product__item">
+                                    <img src="<?= base_url() ?>assets/img/cp-1.jpg.webp" alt="" style="max-width: 50px;">
+                                    <div><?= $c_item->nama; ?></div>
                                 </td>
-                                <td class="cart__price">
-                                    <span class="total-harga" id="total-harga-<?= $c_item->id_barang ?>">
-                                        Rp.<?= number_format($c_item->harga, 0, ',', '.') ?>
-                                    </span>
-                                </td>
-                                <td class="cart__quantity">
+                                <td class="cart__price">Rp.<?= number_format($c_item->harga, 0, ',', '.') ?></td>
+                                 <td class="cart__quantity text-center pr-3">
                                     <div class="pro-qty">
                                         <form>
                                             <input 
@@ -55,60 +44,59 @@
                                     </div>
                                 </td>
                                 <td class="cart__total">
-                                    <span class="total-harga" id="total-harga-<?= $c_item->id_barang ?>">
-                                    Rp. <?= number_format($subtotal, 0, ',', '.') ?>
+                                    <span id="total-harga-desktop-<?= $c_item->id_barang ?>">
+                                        Rp. <?= number_format($subtotal, 0, ',', '.') ?>
                                     </span>
                                 </td>
-                                <td class="cart__close">
-                                    <span class="icon_close"></span>
-                                </td>
+                                <td><span class="icon_close"></span></td>
                             </tr>
-                            <?php 
+                            <?php
                                 $total += $subtotal;
-                            endforeach; 
+                                // var_dump($total);
+                                endforeach; 
                             ?>
                         </tbody>
                     </table>
                 </div>
 
+
                 <!-- Mobile Layout -->
                 <div class="d-md-none">
-                    <?php foreach($cart_item as $key => $c_item): 
-                        $subtotal = $c_item->harga * $c_item->jumlah;
+                    <?php 
+                        $total = 0;
+                        foreach($cart_item as $c_item): 
+                        
+                        $subtotal = $c_item->jumlah * $c_item->harga;
+                        // var_dump($subtotal);
                     ?>
-                    <div class="card mb-3">
+                    <div class="card mb-3" data-id-barang="<?= $c_item->id_barang ?>">
                         <div class="card-body">
-                            <div class="d-flex align-items-center mb-3">
-                                <img src="<?= base_url() ?>assets/img/cp-1.jpg.webp" alt="" class="img-fluid" style="max-width: 50px;">
-                                <div class="ms-3">
-                                    <h6 class="mb-0"><?= $c_item->nama; ?></h6>
-                                    <div class="rating text-warning">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="mb-2">Price: <strong>Rp.<?= number_format($c_item->harga, 0, ',', '.') ?></strong></p>
-                            <p class="mb-2">Quantity: 
+                            <h6><?= $c_item->nama; ?></h6>
+                            <p>Price: Rp.<?= number_format($c_item->harga, 0, ',', '.') ?></p>
+                            <p>Quantity: 
                                 <input 
                                     type="number" 
-                                    class="qty-input form-control d-inline-block w-25" 
+                                    class="qty-input form-control" 
                                     data-id-barang="<?= $c_item->id_barang ?>" 
                                     data-harga="<?= $c_item->harga ?>" 
                                     value="<?= $c_item->jumlah ?>" 
-                                    min="1" 
-                                    max="10">
+                                    min="1">
                             </p>
-                            <p>Total: <strong>Rp. <?= number_format($subtotal, 0, ',', '.') ?></strong></p>
-                            <button class="btn btn-danger btn-sm">Remove</button>
+                            <p>Total: 
+                                <span id="total-harga-mobile-<?= $c_item->id_barang ?>">
+                                    Rp. <?= number_format($subtotal, 0, ',', '.') ?>
+                                </span>
+                            </p>
                         </div>
                     </div>
-                    <?php endforeach; ?>
+                    <?php 
+                        $total += $subtotal;
+                        endforeach;
+                    ?>
                 </div>
+
             </div>
+
 
             </div>
         </div>
@@ -131,8 +119,8 @@
                 <div class="cart__total__procced">
                     <h6>Cart total</h6>
                     <ul class="list-unstyled">
-                        <li>Subtotal: <span><?= number_format($total, 0, ',', '.'); ?></span></li>
-                        <li>Total: <span><?= number_format($total, 0, ',', '.'); ?></span></li>
+                        <li>Subtotal: <span class="subtotal-span"><?= number_format($total, 0, ',', '.'); ?></span></li>
+                        <li>Total: <span class="total-span"><?= number_format($total, 0, ',', '.'); ?></span></li>
                     </ul>
                     <a href="<?= base_url('pembayaran/order') ?>" class="btn btn-success btn-sm w-100">Proceed to checkout</a>
                 </div>
@@ -143,56 +131,76 @@
 <!-- Shop Cart Section End -->
 
 
-<form id="formx">
+<!-- <form id="formx">
     <input type="text" name="r" value="ss">
-</form>
+</form> -->
 <!-- masih ada yang salah -->
 <script>
-$(document).ready(function() {
-    $('.qty-input').on('change', function() {
-        // Ambil data dari input
+$(document).ready(function () {
+    $('.qty-input').on('change', function () {
+        // Ambil elemen input yang diubah
         let inputElement = $(this);
         let idBarang = inputElement.data('id-barang');
         let hargaSatuan = inputElement.data('harga');
-        let jumlahBaru = inputElement.val();
+        let jumlahBaru = parseInt(inputElement.val());
+
+        // Validasi jumlah
+        if (jumlahBaru < 1) {
+            alert('Quantity tidak boleh kurang dari 1.');
+            inputElement.val(1);
+            jumlahBaru = 1;
+        }
 
         // Hitung total harga baru
         let totalHarga = hargaSatuan * jumlahBaru;
 
-        // Data yang akan dikirim ke server
+        // Data untuk dikirim ke server
         let datasend = {
             id_barang: idBarang,
-            jumlah: jumlahBaru
+            jumlah: jumlahBaru,
+            harga: totalHarga
         };
-        // console.log(datasend);
 
-        // Kirim data ke server dengan AJAX
+        // Kirim data ke server
         $.ajax({
-            url: '<?= base_url("cart/update_qty") ?>', // Ganti dengan URL yang sesuai
+            url: '<?= base_url("cart/update_qty") ?>',
             type: 'POST',
             dataType: 'json',
-            // headers: {
-            //     "Accept" : "application/ld+json",
-            //     "Content-Type": "text/json; charset=utf-8"
-            // },
             data: datasend,
-            success: function(response) {
+            success: function (response) {
                 if (response.status === 'success') {
-                    console.log('Kuantitas berhasil diperbarui di server.');
-                    
-                    // Perbarui total harga di UI
-                    inputElement.closest('tr').find('.total-harga').text('Rp ' + totalHarga.toLocaleString());
+                    console.log('Kuantitas berhasil diperbarui.');
+
+                    // Perbarui subtotal untuk item ini di UI desktop
+                    $('#total-harga-desktop-' + idBarang).text('Rp ' + totalHarga.toLocaleString());
+
+                    // Perbarui subtotal untuk item ini di UI mobile (jika ada)
+                    $('#total-harga-mobile-' + idBarang).text('Rp ' + totalHarga.toLocaleString());
+
+                    // Hitung ulang total keseluruhan
+                    let totalKeseluruhan = 0;
+                    $('.cart__total span').each(function () {
+                        // Ambil angka dari setiap subtotal, konversi ke integer
+                        let subtotal = parseInt($(this).text().replace(/[^0-9]/g, ''));
+                        totalKeseluruhan += subtotal;
+                    });
+
+                    // Perbarui total keseluruhan di elemen <ul>
+                    $('.list-unstyled .subtotal-span').text('Rp ' + totalKeseluruhan.toLocaleString());
+                    $('.list-unstyled .total-span').text('Rp ' + totalKeseluruhan.toLocaleString());
+
                 } else {
                     console.error('Gagal memperbarui kuantitas.');
                 }
             },
-            error: function(xhr, status, error) {
-                console.error('Kesalahan saat mengirim data ke server:', error);
-                console.log(xhr.responseText);
+            error: function (xhr, status, error) {
+                console.error('Kesalahan saat mengirim data:', error);
             }
         });
     });
 });
+
+
 
 
 
