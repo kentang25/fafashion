@@ -6,7 +6,7 @@
         {
             $username   = $this->input->post('username');
             $email      = $this->input->post('email');
-            $password   = $this->input->post('password');
+            $password   = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
 
                 $data = array(
 
@@ -20,14 +20,23 @@
                 return $query;
         }
 
-        public function get_user($key,$value)
+        public function get_user($username,$password)
         {
-            $query = $this->db->get_where('tb_auth', array($key=>$value));
-            if($query->row_array()){
-                return $query->row_array();
-            }else{
-                return FALSE;
+            // $query = $this->db->get_where('tb_auth', array($key=>$value));
+            // if($query->row_array()){
+            //     return $query->row_array();
+            // }else{
+            //     return FALSE;
+            // }
+
+            $query = $this->db->get_where('tb_auth', array('username'=>$username));
+            $user = $query->row_array();
+
+            if($user && password_verify($password,$user['password'])){
+                return $user;
             }
+
+            // return FALSE;
         }
 
         public function is_Loggedin()

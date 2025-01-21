@@ -95,7 +95,7 @@ foreach (glob("application/helpers/*.php") as $filename) {
   $nama = str_replace("_helper.php", "", $nama);
   $helper[] = $nama;
 }
-array_push($helper,'string','url','file','cookie','pagination');
+array_push($helper,'string','url','file','cookie','pagination','form');
 $autoload['helper'] = $helper;
 /*
 | -------------------------------------------------------------------

@@ -5,19 +5,26 @@
 				<div class="image-holder">
 					<img src="<?= base_url() ?>assets/img/registration-form-1.jpg" alt="">
 				</div>
+				
 				<form method="POST" action="<?= base_url('login') ?>">
+					
 					<h3>Login Form</h3>
+					<?= $this->session->flashdata('pesan') ?>
 					<div class="form-wrapper">
 						<input type="text" name="username" placeholder="Username" class="form-control">
 						<i class="zmdi zmdi-account"></i>
 					</div>
+					<?= form_error('username', '<div class="text-danger small ml-2 mb-2">','</div>') ?>
+					
 					<div class="form-wrapper">
 						<input type="password" name="password" placeholder="Password" class="form-control">
 						<i class="zmdi zmdi-lock"></i>
 					</div>
+					<?= form_error('password', '<div class="text-danger small ml-2 mb-2">','</div>') ?>
 					<button type="submit">Login
 						<i class="zmdi zmdi-arrow-right"></i>
 					</button>
+					
 				</form>
 			</div>
 		</div>

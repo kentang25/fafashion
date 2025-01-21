@@ -94,35 +94,26 @@ class Cart extends FrontendController {
 
      public function update_qty() {
         $id_barang = $this->input->post('id_barang');
-        // echo json_encode($id_barang);
-        // exit();
         $jumlah = $this->input->post('jumlah');
     
-        if ($id_barang && $jumlah) {
-            // Contoh logika untuk memperbarui kuantitas di database
-            // $this->load->model('Cart_model');
-            $result = $this->M_cart->update_cart_qty($id_barang, $jumlah);
+        // Update kuantitas di database
+        $this->M_cart->update_cart_qty($id_barang, $jumlah);
     
-            if ($result) {
-                $response = [
-                    'status' => 'success',
-                    'message' => 'Quantity updated successfully'
-                ];
-            } else {
-                $response = [
-                    'status' => 'error',
-                    'message' => 'Failed to update quantity'
-                ];
-            }
-        } else {
-            $response = [
-                'status' => 'error',
-                'message' => 'Invalid data received'
-            ];
+        // Hitung ulang total
+        $cart_items = $this->M_cart->get_cart()->result();
+        $total = 0;
+        foreach ($cart_items as $item) {
+            $total += $item->harga * $item->jumlah;
         }
     
-        echo json_encode($response);
+        // Kirim respon JSON
+        echo json_encode([
+            'status' => 'success',
+            'total' => $total
+        ]);
+        redirect('cart-shop');
     }
+    
     
     
     

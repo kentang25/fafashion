@@ -19,7 +19,7 @@
                 
             
         <tr>
-            <td><?= $no=+1 ?></td>
+            <td><?= $no+=1 ?></td>
             <td><?= $odr->total_harga ?></td>
             <td><?= $odr->status ?></td>
             <td><?= $odr->jumlah ?></td>

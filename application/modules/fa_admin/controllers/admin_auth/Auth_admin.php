@@ -46,7 +46,7 @@ class Auth_admin extends BackendController {
                 $this->template_login('auth_admin/v_register_admin',$this->data,true);
             }else{
                 $data = $this->M_auth_admin->insert_data();
-                redirect('register');
+                redirect(base_url('admin/login'));
             }
 	}
 
@@ -62,12 +62,17 @@ class Auth_admin extends BackendController {
             if($this->form_validation->run() == FALSE){
                 $this->template_login('auth_admin/v_login_admin',$this->data,true);
             }else{
-                $data = $this->M_auth_admin->get_admin('username',$this->input->post('username'));
+                $username = $this->input->post('username');
+                $password = $this->input->post('password');
+
+                $data = $this->M_auth_admin->get_admin($username,$password);
+                var_dump($data);
+                exit();
 
                 if($data == FALSE){
                     $this->session->set_flashdata('pesan','<div class="alert alert-warning alert-dismissible fade show" role="alert">
                               Username atau Password anda salah!
-                              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                              
                             </div>');
 
                     $this->session->set_userdata('id_admin',$data['id_admin']);

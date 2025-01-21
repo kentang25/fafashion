@@ -5,7 +5,7 @@
         {
             $email      = $this->input->post('email');
             $username   = $this->input->post('username');
-            $password   = $this->input->post('password');
+            $password   = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
 
                 $data = array(
                     'email'     => $email,
@@ -17,10 +17,14 @@
                 return $query;
         }
 
-        public function get_admin($key,$value)
+        public function get_admin($username,$password)
         {
-            $query = $this->db->get('tb_auth_admin',$key,$value);
-            return $query->result();
+            $query = $this->db->get_where('tb_auth_admin', array('username'=>$username));
+            $admin = $query->row_array();
+
+                if($admin && password_verify($password,$admin['password'])){
+                    return $admin;
+                }
         }
 
         public function is_loggin()

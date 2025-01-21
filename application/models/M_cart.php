@@ -25,6 +25,12 @@
 
         }
 
+        public function get_cart()
+        {
+            $query = $this->db->get('tb_cart');
+            return $query;
+        }
+
         public function get_barang_by_id($id_barang)
         {
             return $this->db->get_where('tb_data_barang', array('id_barang'=>$id_barang))->row();

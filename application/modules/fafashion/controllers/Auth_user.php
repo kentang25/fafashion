@@ -37,9 +37,12 @@ class Auth_user extends FrontendController {
      * @return [type] [description]
      */
 	public function register(){
-		$this->form_validation->set_rules('username','Username','required|is_unique[tb_auth.username]');
-        $this->form_validation->set_rules('password','Password','required');
-        $this->form_validation->set_rules('konfirm_password','Konfirmasi_password','required|matches[password]');
+
+        $this->load->helper('form');
+
+		$this->form_validation->set_rules('username','Username','required|trim|is_unique[tb_auth.username]');
+        $this->form_validation->set_rules('password','Password','required|trim');
+        $this->form_validation->set_rules('konfirm_password','Konfirmasi_password','required|trim|matches[password]');
 
             if($this->form_validation->run() == FALSE){
                 $this->template_login('auth/v_register',$this->data,true);
@@ -51,23 +54,30 @@ class Auth_user extends FrontendController {
 
     public function login()
     {
+        $this->load->helper('form');
 
         if($this->M_auth_user->is_Loggedin()){
             redirect(base_url('fafashion'));
         }
 
-        $this->form_validation->set_rules('username','Username','required');
-        $this->form_validation->set_rules('password','Password','required');
+        $this->form_validation->set_rules('username','Username','required|trim');
+        $this->form_validation->set_rules('password','Password','required|trim');
 
             if($this->form_validation->run() == FALSE){
                 $this->template_login('auth/v_login',$this->data,true);
             }else{
-                $data = $this->M_auth_user->get_user('username', $this->input->post('username'));
+                // $data = $this->M_auth_user->get_user('username', $this->input->post('username'));
+                // $pass = $this->M_auth_user->get_user('password',$this->input->post('password'));
+                $username = $this->input->post('username');
+                $password = $this->input->post('password');
+                $data = $this->M_auth_user->get_user($username,$password);
+                // var_dump($data);
+                // exit();
 
                     if($data == FALSE){
-                        $this->session->set_flashdata('pesan','<div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        $this->session->set_flashdata('pesan','<div class="alert alert-warning alert-dismissible fade-show" role="alert">
                               Username atau Password anda salah!
-                              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                              
                             </div>');
                         redirect('login');
                     }else{
