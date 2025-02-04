@@ -44,6 +44,7 @@
             
             <button type="submit" class="btn btn-primary btn-sm">Update</button>
             <button type="reset" class="btn btn-warning btn-sm">Reset</button>
+            <a href="<?= base_url('admin/data-barang') ?>"><button class="btn btn-info btn-sm">Back</button></a>
         </form>
 
     <?php endforeach; ?>

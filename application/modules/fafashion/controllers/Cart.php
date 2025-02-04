@@ -95,10 +95,12 @@ class Cart extends FrontendController {
      public function update_qty() {
         $id_barang = $this->input->post('id_barang');
         $jumlah = $this->input->post('jumlah');
-    
+        $harga = $this->input->post('harga');
+        // var_dump($harga);
+        // exit();
         // Update kuantitas di database
-        $this->M_cart->update_cart_qty($id_barang, $jumlah);
-    
+        $this->M_cart->update_cart_qty($id_barang, $jumlah, $harga);
+        
         // Hitung ulang total
         $cart_items = $this->M_cart->get_cart()->result();
         $total = 0;
@@ -107,11 +109,14 @@ class Cart extends FrontendController {
         }
     
         // Kirim respon JSON
+        header('Content-Type: application/json');
         echo json_encode([
             'status' => 'success',
-            'total' => $total
+            'total' => $total,
+            'redirect' => "http://localhost/fafashion/cart-shop"
         ]);
-        redirect('cart-shop');
+        exit;
+        // redirect('cart-shop');
     }
     
     

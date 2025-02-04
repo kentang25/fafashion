@@ -12,7 +12,7 @@
                 </div>
             </div>
         </form>
-
+    <div class ="table-responsive d-none d-md-block">
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -42,6 +42,28 @@
     </table>
 
     <?= $pagination; ?>
+    </div>
+
+    <div class ="d-block d-md-none">
+        <?php 
+            $no = 0;
+            foreach($data_cart as $key => $d_cart) :
+        ?>
+        <div class="card mb-3">
+            <div class="body-card p-4">
+                <h5 class="card-title"><strong>Data Cart </strong><?= ++$no ?></h5>
+                <p><strong>Nama :</strong> <?= $d_cart->nama ?></p>
+                <p><strong>Harga :</strong> <?= $d_cart->harga ?></p>
+                <p><strong>Jumlah :</strong> <?= $d_cart->jumlah ?></p>
+                <p><strong>ID Barang :</strong> <?= $d_cart->id_barang ?></p>
+                <p><strong>ID User :</strong> <?= $d_cart->id_user ?></p>
+            </div>
+        </div>
+        <?php
+            endforeach;
+            echo $pagination;
+        ?>
+    </div>
 
 </div>
 

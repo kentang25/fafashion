@@ -38,7 +38,18 @@ class Data_order extends BackendController {
      */
 	public function index() {
         
-        $this->data['orders'] = $this->M_data_order->tampil_data()->result();
+        $jumlah = $this->M_data_order->get_count();
+
+        $base_url = base_url('fa_admin/data_order/index');
+        $per_page = 10;
+        $uri_segment = 4;
+
+        $total_rows = $jumlah;
+        $offset     = $this->uri->segment($uri_segment,0);
+
+        $this->data['orders'] = $this->M_data_order->get($per_page,$offset);
+        $this->data['pagination'] = pagination_helper($base_url,$total_rows,$per_page,$uri_segment);
+
         $this->template_admin('v_data_order',$this->data,true);
 
     }

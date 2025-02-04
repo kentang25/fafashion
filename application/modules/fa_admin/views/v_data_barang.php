@@ -15,7 +15,7 @@
                 </div>
             </div>
         </form>
-
+		<div class="table-responsive d-none d-md-block">
         <table class="table table-bordered">
 			<thead>
 				<tr>
@@ -55,8 +55,32 @@
 			</tbody>
 			<?php endforeach; ?>
         </table>
+		<?= $pagination ?>
+		</div>
 		
-        <?= $pagination ?>
+
+		<div class="d-block d-md-none">
+			<?php
+				$no = 0;
+				foreach($barang as $key => $d_brg):
+			?>
+			<div class="card mb-3">
+				<div class="card-body">
+					<h5 class="card-title"><strong>Data Barang</strong> <?= ++$no ?></h5>
+					<p><strong>Nama Barang :</strong><?= $d_brg->nama_barang ?></p>
+					<p><strong>Keterangan :</strong><?= $d_brg->keterangan ?></p>
+					<p><strong>Kategori :</strong><?= $d_brg->kategori ?></p>
+					<a><?= anchor('admin/data-barang/edit/'. $d_brg->id_barang,'<div class="btn btn-primary"><i class="fa fa-edit"></i></div>' ) ?></a>
+					<a><?= anchor('admin/data-barang/delete/'. $d_brg->id_barang,'<div class="btn btn-warning"><i class="fa fa-trash"></i></div>' ) ?></a>
+					<a><?= anchor('admin/data-barang/detail/'. $d_brg->id_barang,'<div class="btn btn-info"><i class="fa fa-search"></i></div>' ) ?></td>
+				</div>
+			</div>
+			<?php
+				endforeach;
+				echo $pagination;
+			?>
+		</div>
+        
         
     <!-- Modal -->
 	<div class="modal fade" id="modal_barang" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -153,6 +153,7 @@ $(document).ready(function () {
 
         // Hitung total harga baru
         let totalHarga = hargaSatuan * jumlahBaru;
+        // console.log(totalHarga);
 
         // Data untuk dikirim ke server
         let datasend = {
@@ -160,6 +161,7 @@ $(document).ready(function () {
             jumlah: jumlahBaru,
             harga: totalHarga
         };
+        console.log(datasend);
 
         // Kirim data ke server
         $.ajax({

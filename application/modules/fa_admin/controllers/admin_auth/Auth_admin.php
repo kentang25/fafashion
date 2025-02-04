@@ -66,20 +66,25 @@ class Auth_admin extends BackendController {
                 $password = $this->input->post('password');
 
                 $data = $this->M_auth_admin->get_admin($username,$password);
-                var_dump($data);
-                exit();
+                // var_dump($data);
+                // exit();
 
                 if($data == FALSE){
                     $this->session->set_flashdata('pesan','<div class="alert alert-warning alert-dismissible fade show" role="alert">
                               Username atau Password anda salah!
                               
                             </div>');
-
+                            redirect(base_url('admin/login'));     
+                }else{
                     $this->session->set_userdata('id_admin',$data['id_admin']);
+                    // var_dump($sess);
+                    // exit();
                     $this->session->set_userdata('is_loggedin',TRUE);
 
                     redirect(base_url('admin'));
                 }
+                   
+                
             }
     }
 
