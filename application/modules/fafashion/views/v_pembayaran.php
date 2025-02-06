@@ -74,11 +74,11 @@
                                 $total = 0;
                                 foreach($order_items as $key => $o_item) :
 
-                                    $total += $o_item->harga * $o_item->jumlah;
-
+                                    $subtotal = $o_item->harga * $o_item->jumlah;
+                                    $total += $subtotal;
 
                             ?>
-                                <li><?= $o_item->nama ?> <span>Rp. <?= number_format( $o_item->harga,0,',','.') ?></span></li>
+                                <li><?= $o_item->nama ?> <span>Rp. <?= number_format( $subtotal,0,',','.') ?></span></li>
                             <?php endforeach; ?>
                             </ul>
                             

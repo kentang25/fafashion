@@ -57,8 +57,22 @@
 
         public function clear_cart($id_user)
         {
+            $this->db->trans_start();
+
             $this->db->where('id_user',$id_user);
-            return $this->db->delete('tb_cart');
+            $this->db->delete('tb_cart');
+
+            $this->db->where('id_user',$id_user);
+            $this->db->delete('tb_order');
+
+            $this->db->trans_complete();
+
+            if($this->db->trans_status() === FALSE){
+                return false;
+            }else{
+                redirect('shop');
+            }
+
         }
 
 

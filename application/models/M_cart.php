@@ -39,7 +39,10 @@
         public function update_cart_qty($id_barang,$jumlah)
         {
             $this->db->where('id_barang', $id_barang);
-            return $this->db->update('tb_cart', ['jumlah' => $jumlah]);
+            return $this->db->update('tb_cart', [
+                'jumlah' => $jumlah
+                
+            ]);
         }
 
 

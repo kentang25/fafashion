@@ -91,10 +91,11 @@ class Pembayaran extends FrontendController {
      public function transaksi($id_order)
      {
         $get_id_order = $this->M_pembayaran->get_id_order($id_order);
-        
-
-        $get_order = $this->M_pembayaran->get_order();
-
+        // var_dump($get_id_order);
+        // exit();
+        $get_order = $this->M_pembayaran->get_order($get_id_order);
+        // var_dump($get_order);
+        // exit();
         $subtotal = 0;
 
         foreach($get_order as $key => $items){
@@ -102,7 +103,7 @@ class Pembayaran extends FrontendController {
         }
 
         $subtotal;
-        
+        // var_dump($subtotal);
 
         $status_pembayaran = 'succes';
 
@@ -137,7 +138,7 @@ class Pembayaran extends FrontendController {
             $id_user = $this->M_auth_user->get_id_user();
             $this->M_pembayaran->clear_cart($id_user);
 
-            redirect('shop');
+            // redirect('shop');
 
         }else{
             return FALSE;
